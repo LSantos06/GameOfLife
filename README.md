@@ -1,2 +1,2 @@
 # GameOfLife
-Trabalho 1 de Programacão Orientada Objetos CIC/UnB
+Projeto da disciplina de Programação Orientada a Objetos (1/2016) na Universidade de Brasília
