@@ -1,19 +1,15 @@
-package br.unb.cic.poo.engines;
+package br.unb.cic.poo.tutorial;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.FileSystemResource;
 
-public class GameEngine {
+public class DrawingApp {
 
 	public static void main(String[] args) {
-		//Conway conway = new Conway();
+		//Triangle triangle = new Triangle();
 		//BeanFactory factory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");		
-		Conway conway = (Conway)context.getBean("conway");
-		conway.game();
+		Triangle triangle = (Triangle)context.getBean("triangle");
+		triangle.draw();
 	}
-
 }
