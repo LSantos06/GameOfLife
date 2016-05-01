@@ -1,5 +1,7 @@
 package br.unb.cic.poo.tutorial;
 
+import java.util.List;
+
 public class Triangle {
 
 //	private String type;
@@ -38,39 +40,20 @@ public class Triangle {
 //	}
 	
 	
-	private Point A;
-	private Point B;
-	private Point C;
+	private List<Point> points;
 	
-	
-	public Point getA() {
-		return A;
+	public List<Point> getPoints() {
+		return points;
 	}
 
-	public void setA(Point a) {
-		A = a;
+	public void setPoints(List<Point> points) {
+		this.points = points;
 	}
 
-	public Point getB() {
-		return B;
-	}
-
-	public void setB(Point b) {
-		B = b;
-	}
-
-	public Point getC() {
-		return C;
-	}
-
-	public void setC(Point c) {
-		C = c;
-	}
-	
-	
 	public void draw(){
-		System.out.println("A = (" + getA().getX() + "," + getA().getY() + ")");
-		System.out.println("B = (" + getB().getX() + "," + getB().getY() + ")");
-		System.out.println("C = (" + getC().getX() + "," + getC().getY() + ")");
+		
+		for (Point point: points) {
+			System.out.println("(" + point.getX() + "," + point.getY() + ")");
+		}
 	}
 }

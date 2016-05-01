@@ -24,4 +24,14 @@ public class Statistics {
 	public void recordKill() {
 		this.killedCells++;
 	}
+	
+	//TODO
+	public void display() {
+		System.out.println("=================================");
+		System.out.println("           Statistics            ");
+		System.out.println("=================================");
+		System.out.println("Revived cells: " + revivedCells);
+		System.out.println("Killed cells: " + killedCells);
+		System.out.println("=================================");
+	}
 }

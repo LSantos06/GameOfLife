@@ -13,15 +13,19 @@
 		<!-- <constructor-arg index="1" type="int" value="10"/> -->
 	
 		<!-- Object injection -->
-		<property name="A" ref="first"/>
-		<property name="B">
-			<!-- Inner Bean -->
-			<bean class="br.unb.cic.poo.tutorial.Point">
-				<property name="X" value="42"/>
-				<property name="Y" value="5"/>
-			</bean>
+		<!-- <property name="A" ref="first"/>  -->
+		<property name="points">
+			<list>
+				<ref bean="first"/>
+				<!-- Inner Bean -->
+				<bean class="br.unb.cic.poo.tutorial.Point">
+					<property name="X" value="42"/>
+					<property name="Y" value="5"/>
+				</bean>
+				<ref bean="third"/>
+			</list>
 		</property>
-		<property name="C" ref="third"/>
+		<!-- <property name="C" ref="third"/>  -->
 		
 	</bean>
 	
