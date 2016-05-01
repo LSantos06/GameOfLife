@@ -1,8 +1,12 @@
 package br.unb.cic.poo.game;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import br.unb.cic.poo.controller.GameController;
 import br.unb.cic.poo.engine.Conway;
 import br.unb.cic.poo.engine.GameEngine;
+import br.unb.cic.poo.tutorial.Triangle;
 import br.unb.cic.poo.view.GameView;
 
 /**
@@ -21,9 +25,16 @@ public class Main {
 
 		GameEngine engine = new GameEngine(10, 10, statistics);	
 		
-		//nessa implementacao, a estrategia do Conway eh 
-		//configurada como a estrategia inicial. 
-		engine.setStrategy(new Conway());
+		/*
+		 * Utilizando a injecao de dependencia
+		 */
+		ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
+		
+		/*
+		 * Nessa implementacao, a estrategia do Conway eh 
+		 * a padrao.
+		 */
+		engine.setStrategy((Conway)context.getBean("conway"));
 		
 		GameView board = new GameView(controller, engine);
 		
