@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+
+<beans>
+	<bean id="conway" class="br.unb.cic.poo.engines.Conway">
+		<!-- Setter injection -->
+		<!-- <property name="type" value="rule"/> -->
+	
+		<!-- Constructor injection -->
+		<!-- <constructor-arg index="0" type="java.lang.String" value="rule"/> -->
+		<!-- <constructor-arg index="1" type="int" value="1"/> -->
+	
+		<!-- Object injection -->
+		<property name="A" ref="first"/>
+		<property name="B">
+			<!-- Inner Bean -->
+			<bean class="br.unb.cic.poo.engines.HighLife">
+				<property name="alive" value="42"/>
+				<property name="dead" value="5"/>
+			</bean>
+		</property>
+		<property name="C" ref="third"/>
+		
+	</bean>
+	
+	<!-- Object Injection -->
+	<bean id="first" class="br.unb.cic.poo.engines.HighLife">
+		<property name="alive" value="32"/>
+		<property name="dead" value="10"/>
+	</bean>
+
+	<bean id="third" class="br.unb.cic.poo.engines.HighLife">
+		<property name="alive" value="12"/>
+		<property name="dead" value="16"/>
+	</bean>
+	
+	<!-- Aliases -->
+	<alias name="conway" alias="conway-alias"/>
+	
+</beans>

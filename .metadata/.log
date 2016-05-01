@@ -595,3 +595,18 @@ Java Model Exception: Java Model Status [org.springframework.beans.factory.xml [
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 !SUBENTRY 1 org.eclipse.jdt.core 4 969 2016-05-01 13:43:33.118
 !MESSAGE org.springframework.beans.factory.xml [in C:\Users\Avell G1713 MAX\Desktop\openlogic-spring-3.0.5-all-src-1\spring-3.0.5-src\dist\org.springframework.beans-3.0.5.RELEASE.jar] does not exist
+
+!ENTRY org.eclipse.ui 4 4 2016-05-01 14:22:01.834
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.refactorBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-01 14:22:01.834
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-01 14:22:01.840
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.moveBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-01 14:22:01.840
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-01 14:22:01.845
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-01 14:22:01.845
+!MESSAGE Action must implement IEditorActionDelegate
