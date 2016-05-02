@@ -1,6 +1,8 @@
 package br.unb.cic.poo.view;
 
 import java.util.Scanner;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.unb.cic.poo.controller.GameController;
 import br.unb.cic.poo.engine.Conway;
@@ -51,6 +53,10 @@ public class GameView {
 	}
 
 	private void printOptions() {
+		/*
+		 * Utilizando a injecao de dependencia
+		 */
+		ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
 		Scanner s = new Scanner(System.in);
 		int option;
 		System.out.println("\n \n");
@@ -71,8 +77,8 @@ public class GameView {
 		switch(option) {
 			case MAKE_CELL_ALIVE : makeCellAlive(); break;
 			case NEXT_GENERATION : nextGeneration(); break;
-			case CONWAY : engine.setStrategy(new Conway()); update(); break;
-			case HIGH_LIFE : engine.setStrategy(new HighLife()); update();break;
+			case CONWAY : engine.setStrategy((Conway)context.getBean("conway")); update(); break;
+			case HIGH_LIFE : engine.setStrategy((Conway)context.getBean("highlife")); update();break;
 			case HALT : halt();
 		}
 	}
