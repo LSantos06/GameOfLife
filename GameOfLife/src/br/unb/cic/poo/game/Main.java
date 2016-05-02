@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.unb.cic.poo.controller.GameController;
+import br.unb.cic.poo.engine.Strategy;
 import br.unb.cic.poo.model.GameEngine;
 import br.unb.cic.poo.view.GameView;
 
@@ -26,11 +27,15 @@ public class Main {
 		 */
 		ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
 		
+		//TODO: bean statistcs causa erro
+		//GameEngine engine = (GameEngine)context.getBean("engine");
+		GameEngine engine = new GameEngine(10, 10, statistics);
+		
 		/*
 		 * Nessa implementacao, a estrategia do Conway eh 
 		 * a padrao.
 		 */
-		GameEngine engine = (GameEngine)context.getBean("engine");
+		engine.setStrategy((Strategy)context.getBean("conway"));
 		
 		GameView board = new GameView(controller, engine);
 		

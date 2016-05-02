@@ -26,7 +26,7 @@ public class GameEngine {
 	 * @param height
 	 *            dimensao vertical do ambiente
 	 * @param width
-	 *            dimentsao horizontal do ambiente
+	 *            dimensao horizontal do ambiente
 	 */
 	public GameEngine(int height, int width, Statistics statistics) {
 		this.height = height;
@@ -57,7 +57,7 @@ public class GameEngine {
 	/*
 	 * Injecao de dependencia
 	 * 
-	 */
+	 *
 	public boolean shouldKeepAlive(int i, int j, Strategy strategy){
 		return this.strategy.shouldKeepAlive(i, j, this);
 	}
@@ -65,6 +65,7 @@ public class GameEngine {
 	public boolean shouldRevive(int i, int j, Strategy strategy){
 		return this.strategy.shouldRevive(i, j, this);
 	}
+	*/
 	
 	/*
 	 * Calcula uma nova geracao do ambiente. Essa implementacao delega para 
@@ -79,10 +80,10 @@ public class GameEngine {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				
-				if (this.shouldRevive(i, j, this.strategy)) {
+				if (strategy.shouldRevive(i, j, this)) {
 					mustRevive.add(cells[i][j]);
 				} 
-				else if ((!this.shouldKeepAlive(i, j, this.strategy)) && cells[i][j].isAlive()) {
+				else if ((!strategy.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
 					mustKill.add(cells[i][j]);
 				}
 			}

@@ -14,7 +14,7 @@
 	</bean>
 	
 	<!-- Statistics -->
-	<bean id="statistics" class="br.unb.cic.poo.game.Statistics" />
+	<bean id="statistics" class="br.unb.cic.poo.game.Statistics"/>
 	
 	<!-- Rules -->
 	<bean id="anneal" class="br.unb.cic.poo.engine.Anneal" />
