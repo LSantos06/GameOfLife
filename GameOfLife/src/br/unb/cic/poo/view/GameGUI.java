@@ -25,6 +25,7 @@ public class GameGUI extends JFrame implements ActionListener{
     private JMenu game, rule, statistics;
     private JMenuItem gamePlay, gameStop, gameReset, gameMovesPerSecond, gameAutofill, gameExit;
     private JMenuItem ruleAnneal, ruleConway, ruleDayAndNight, ruleDiamoeba, ruleHighLife, ruleLifeWithoutDeath, ruleMorley, ruleReplicator, ruleSeeds;
+    private JMenuItem statisticsView;
     private int movesPerSecond = 3;
     private GameBoard gameBoard;
     private Thread gameOfLife;
@@ -97,31 +98,31 @@ public class GameGUI extends JFrame implements ActionListener{
         game.add(gameExit);       
         
         // Sub-menu of the column Rule
-        ruleAnneal = new JMenuItem("Anneal B4678/S35678");
+        ruleAnneal = new JMenuItem("Anneal (B4678/S35678)");
         ruleAnneal.addActionListener(this);
 
-        ruleConway = new JMenuItem("Conway B3/S23");
+        ruleConway = new JMenuItem("Conway (B3/S23)");
         ruleConway.addActionListener(this);
 
-        ruleDayAndNight = new JMenuItem("DayAndNight B3678/S34678");
+        ruleDayAndNight = new JMenuItem("DayAndNight (B3678/S34678)");
         ruleDayAndNight.addActionListener(this);
         
-        ruleDiamoeba = new JMenuItem("Diamoeba B35678/S5678");
+        ruleDiamoeba = new JMenuItem("Diamoeba (B35678/S5678)");
         ruleDiamoeba.addActionListener(this);
 
-        ruleHighLife = new JMenuItem("High Life B36/S23");
+        ruleHighLife = new JMenuItem("High Life (B36/S23)");
         ruleHighLife.addActionListener(this);
         
-        ruleLifeWithoutDeath = new JMenuItem("Life Without Death B3/S012345678");
+        ruleLifeWithoutDeath = new JMenuItem("Life Without Death (B3/S012345678)");
         ruleLifeWithoutDeath.addActionListener(this);
         
-        ruleMorley = new JMenuItem("Morley B368/S245");
+        ruleMorley = new JMenuItem("Morley (B368/S245)");
         ruleMorley.addActionListener(this);
         
-        ruleReplicator = new JMenuItem("Replicator B1357/S1357");
+        ruleReplicator = new JMenuItem("Replicator (B1357/S1357)");
         ruleReplicator.addActionListener(this);
         
-        ruleSeeds = new JMenuItem("Seeds B2/S");
+        ruleSeeds = new JMenuItem("Seeds (B2/S)");
         ruleSeeds.addActionListener(this);
         
         rule.add(ruleAnneal);
@@ -134,9 +135,11 @@ public class GameGUI extends JFrame implements ActionListener{
         rule.add(ruleReplicator);
         rule.add(ruleSeeds);
         
-        // Column Statistics
-        statistics = new JMenu("Statistics");
-        statistics.addActionListener(this);
+        // Sub-menu of the column Statistics
+        statisticsView = new JMenuItem("View");
+        statisticsView.addActionListener(this);
+        
+        statistics.add(statisticsView);
         
         // Setup game board
         gameBoard = new GameBoard();
@@ -147,6 +150,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		this.engine = engine;
     }
     
+    //TODO
     public void setGameBeingPlayed(boolean isBeingPlayed) {
         if (isBeingPlayed) {
             gamePlay.setEnabled(false);
@@ -168,16 +172,21 @@ public class GameGUI extends JFrame implements ActionListener{
 		// Sub-menu Game
 		if (actionEvent.getSource().equals(gamePlay)){
 			//TODO Play the game
+			setGameBeingPlayed(true);
 		} else if (actionEvent.getSource().equals(gameStop)){
 			//TODO Stop the game
+			setGameBeingPlayed(false);
 		} else if (actionEvent.getSource().equals(gameReset)){
 			//TODO Reset the game
+			gameBoard.resetBoard();
+            gameBoard.repaint();
 		} else if (actionEvent.getSource().equals(gameMovesPerSecond)){
 			//TODO Defines the moves per second
 		} else if (actionEvent.getSource().equals(gameAutofill)){
 			//TODO Generates cells randomly
 		} else if (actionEvent.getSource().equals(gameExit)){
-			//TODO Exit the game
+			// Exit the game
+			System.exit(0);
 		}
 		
 		// Sub-menu Rule
@@ -219,9 +228,8 @@ public class GameGUI extends JFrame implements ActionListener{
 		}
 		
 		// Sub-menu Statistics
-		else if (actionEvent.getSource().equals(statistics)){
+		else if (actionEvent.getSource().equals(statisticsView)){
 			//TODO Statistics
-            JOptionPane.showMessageDialog(null, "Statistics");
 		}
 	}
     
