@@ -1,9 +1,10 @@
-package br.unb.cic.poo.engine;
+package br.unb.cic.poo.model;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.unb.cic.poo.engine.Strategy;
 import br.unb.cic.poo.game.Cell;
 import br.unb.cic.poo.game.Statistics;
 

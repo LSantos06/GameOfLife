@@ -6,8 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.unb.cic.poo.controller.GameController;
 import br.unb.cic.poo.engine.Conway;
-import br.unb.cic.poo.engine.GameEngine;
 import br.unb.cic.poo.engine.HighLife;
+import br.unb.cic.poo.model.GameEngine;
 
 /**
  * Atua como um componente de apresentacao (view), exibindo o estado atual do

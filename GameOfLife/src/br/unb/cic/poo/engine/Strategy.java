@@ -1,5 +1,7 @@
 package br.unb.cic.poo.engine;
 
+import br.unb.cic.poo.model.GameEngine;
+
 /**
  * Interface com a declaracao dos metodos  que apoiam o 
  * calculo de uma proxima derivacao no GameOfLife. 

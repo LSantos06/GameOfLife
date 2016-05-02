@@ -1,5 +1,7 @@
 package br.unb.cic.poo.engine;
 
+import br.unb.cic.poo.model.GameEngine;
+
 /**
  * Implementacao de uma estrategia de derivacao 
  * baseada nas regras do LifeWithoutDeath. 

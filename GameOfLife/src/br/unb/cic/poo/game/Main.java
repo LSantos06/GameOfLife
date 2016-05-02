@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.unb.cic.poo.controller.GameController;
 import br.unb.cic.poo.engine.Conway;
-import br.unb.cic.poo.engine.GameEngine;
+import br.unb.cic.poo.model.GameEngine;
 import br.unb.cic.poo.tutorial.Triangle;
 import br.unb.cic.poo.view.GameView;
 
