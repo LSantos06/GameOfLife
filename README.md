@@ -11,6 +11,10 @@ Baseado nos códigos disponibilizados no ambiente moodle da disciplina as seguin
 * Torne a implementação mais extensível com o uso do padrão **injeção de dependância (ID)**, de tal forma que os objetos que implementam os diferentes algoritmos para calcular as regras de derivação sejam injetados no programa (em vez de diretamente instanciados). Alternativas tecnológicas: *Spring framework (apenas a parte de ID)*, *Google Guice* ou *Java reflection (introspecção)*.
 
 ##### Material de estudo:
+[Cave of Programming (YouTube) - *Java Swing (GUI)*](https://www.youtube.com/playlist?list=PL3D7046DF2257751F)
+
+[DevMedia - Injeção de dependência](http://www.devmedia.com.br/padrao-de-injecao-de-dependencia/18506)
+
 [Java Brains (YouTube) - *Spring Framework*](https://www.youtube.com/playlist?list=PLC97BDEFDCDD169D7)
 
 [Tutorialspoint - *Spring Framework*](http://www.tutorialspoint.com/spring/index.htm)
