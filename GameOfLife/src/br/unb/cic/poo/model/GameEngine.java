@@ -38,7 +38,7 @@ public class GameEngine {
 		// Cria uma celula para cada posicao do tabuleiro
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
-				cells[i][j] = new Cell();
+				cells[i][j] = new Cell(i,j);
 			}
 		}
 		

@@ -2,10 +2,18 @@ package br.unb.cic.poo.view;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import javax.swing.*;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import br.unb.cic.poo.controller.GameController;
+import br.unb.cic.poo.engine.Strategy;
+import br.unb.cic.poo.game.Cell;
+import br.unb.cic.poo.game.Statistics;
+import br.unb.cic.poo.model.GameEngine;
 
 public class GameGUI extends JFrame implements ActionListener{
     //TODO
@@ -21,9 +29,21 @@ public class GameGUI extends JFrame implements ActionListener{
     private GameBoard gameBoard;
     private Thread gameOfLife;
     
+	private GameEngine engine;
+	private GameController controller;
+    
     public static void main(String[] args) {
+    	// Initializing Statistics
+    	Statistics gameStatistics = new Statistics();
+    	
+    	// Initializing Controller and Engine
+    	GameController controller = new GameController();
+    	//TODO
+    	GameEngine engine = new GameEngine(10, 10, gameStatistics);
+    	
         // Setup the swing specifics
-        JFrame game = new GameGUI();
+        JFrame game = new GameGUI(controller, engine);
+        
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.setTitle("Conway's Game of Life");
         game.setSize(DEFAULT_WINDOW_SIZE);
@@ -33,7 +53,7 @@ public class GameGUI extends JFrame implements ActionListener{
         game.setVisible(true);
     }
     
-    public GameGUI(){
+    public GameGUI(GameController controller, GameEngine engine){
         // Setting up the menu
         menu = new JMenuBar();
         setJMenuBar(menu);
@@ -121,6 +141,10 @@ public class GameGUI extends JFrame implements ActionListener{
         // Setup game board
         gameBoard = new GameBoard();
         add(gameBoard);    	
+        
+        // Setting Controller and Engine
+		this.controller = controller;
+		this.engine = engine;
     }
     
     public void setGameBeingPlayed(boolean isBeingPlayed) {
@@ -138,6 +162,8 @@ public class GameGUI extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
+		// Dependency injection
+		ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
 		
 		// Sub-menu Game
 		if (actionEvent.getSource().equals(gamePlay)){
@@ -157,22 +183,39 @@ public class GameGUI extends JFrame implements ActionListener{
 		// Sub-menu Rule
 		else if (actionEvent.getSource().equals(ruleAnneal)){
 			//TODO Anneal
+			engine.setStrategy((Strategy)context.getBean("anneal"));
+			
 		} else if (actionEvent.getSource().equals(ruleConway)){
 			//TODO Conway
+			
+			
 		} else if (actionEvent.getSource().equals(ruleDayAndNight)){
 			//TODO DayAndNight
+			engine.setStrategy((Strategy)context.getBean("dayandnight"));
+			
 		} else if (actionEvent.getSource().equals(ruleDiamoeba)){
 			//TODO Diamoeba
+			engine.setStrategy((Strategy)context.getBean("diamoeba"));
+			
 		} else if (actionEvent.getSource().equals(ruleHighLife)){
 			//TODO HighLife
+			engine.setStrategy((Strategy)context.getBean("highlife"));
+			
 		} else if (actionEvent.getSource().equals(ruleLifeWithoutDeath)){
 			//TODO LifeWithoutDeath
+			engine.setStrategy((Strategy)context.getBean("lifewithoutdeath"));
+			
 		} else if (actionEvent.getSource().equals(ruleMorley)){
 			//TODO Morley
+			engine.setStrategy((Strategy)context.getBean("morley"));
+			
 		} else if (actionEvent.getSource().equals(ruleReplicator)){
 			//TODO Replicator
+			engine.setStrategy((Strategy)context.getBean("replicator"));
+			
 		} else if (actionEvent.getSource().equals(ruleSeeds)){
 			//TODO Seeds
+			engine.setStrategy((Strategy)context.getBean("seeds"));
 		}
 		
 		// Sub-menu Statistics
@@ -184,7 +227,7 @@ public class GameGUI extends JFrame implements ActionListener{
     
 	  private class GameBoard extends JPanel implements ComponentListener, MouseListener, MouseMotionListener, Runnable {
 	        private Dimension gameBoardSize = null;
-	        private ArrayList<Point> point = new ArrayList<Point>(0);
+	        private ArrayList<Cell> cell = new ArrayList<Cell>(0);
 	        
 	        public GameBoard() {
 	            // Add resizing listener
@@ -194,111 +237,117 @@ public class GameGUI extends JFrame implements ActionListener{
 	        }
 	        
 	        private void updateArraySize() {
-	            ArrayList<Point> removeList = new ArrayList<Point>(0);
-	            for (Point current : point) {
-	                if ((current.x > gameBoardSize.width-1) || (current.y > gameBoardSize.height-1)) {
+	            ArrayList<Cell> removeList = new ArrayList<Cell>(0);
+	            for (Cell current : cell) {
+	                if ((current.getX() > gameBoardSize.width-1) || (current.getY() > gameBoardSize.height-1)) {
 	                    removeList.add(current);
 	                }
 	            }
-	            point.removeAll(removeList);
+	            cell.removeAll(removeList);
 	            repaint();
 	        }
 	        
-	        public void addPoint(int x, int y) {
-	            if (!point.contains(new Point(x,y))) {
-	                point.add(new Point(x,y));
+	        public void addCell(int x, int y) {
+	            if (!cell.contains(new Cell(x,y))) {
+	                cell.add(new Cell(x,y));
 	            } 
 	            repaint();
 	        }
 	        
-	        public void addPoint(MouseEvent me) {
-	            int x = me.getPoint().x/BLOCK_SIZE-1;
-	            int y = me.getPoint().y/BLOCK_SIZE-1;
+	        public void addCell(MouseEvent mouseEvent) {
+	            int x = mouseEvent.getPoint().x/BLOCK_SIZE-1;
+	            int y = mouseEvent.getPoint().y/BLOCK_SIZE-1;
 	            if ((x >= 0) && (x < gameBoardSize.width) && (y >= 0) && (y < gameBoardSize.height)) {
-	                addPoint(x,y);
+	            	addCell(x,y);
 	            }
 	        }
 	        
-	        public void removePoint(int x, int y) {
-	            point.remove(new Point(x,y));
+	        public void removeCell(int x, int y) {
+	            cell.remove(new Cell(x,y));
 	        }
 	        
 	        public void resetBoard() {
-	            point.clear();
+	            cell.clear();
 	        }
 	        
 	        public void randomlyFillBoard(int percent) {
 	            for (int i=0; i<gameBoardSize.width; i++) {
 	                for (int j=0; j<gameBoardSize.height; j++) {
 	                    if (Math.random()*100 < percent) {
-	                        addPoint(i,j);
+	                    	addCell(i,j);
 	                    }
 	                }
 	            }
 	        }
 	        
 	        @Override
-	        public void paintComponent(Graphics g) {
-	            super.paintComponent(g);
+	        public void paintComponent(Graphics graphics) {
+	            super.paintComponent(graphics);
+	            
 	            try {
-	                for (Point newPoint : point) {
+	                for (Cell newCell : cell) {
 	                    // Draw new point
-	                    g.setColor(Color.darkGray);
-	                    g.fillRect(BLOCK_SIZE + (BLOCK_SIZE*newPoint.x), BLOCK_SIZE + (BLOCK_SIZE*newPoint.y), BLOCK_SIZE, BLOCK_SIZE);
+	                	graphics.setColor(Color.darkGray);
+	                	graphics.fillRect(BLOCK_SIZE + (BLOCK_SIZE*newCell.getX()), BLOCK_SIZE + (BLOCK_SIZE*newCell.getY()), BLOCK_SIZE, BLOCK_SIZE);
 	                }
 	            } catch (ConcurrentModificationException cme) {}
+	            
 	            // Setup grid
-	            g.setColor(Color.BLACK);
+	            graphics.setColor(Color.BLACK);
 	            for (int i=0; i<=gameBoardSize.width; i++) {
-	                g.drawLine(((i*BLOCK_SIZE)+BLOCK_SIZE), BLOCK_SIZE, (i*BLOCK_SIZE)+BLOCK_SIZE, BLOCK_SIZE + (BLOCK_SIZE*gameBoardSize.height));
+	            	graphics.drawLine(((i*BLOCK_SIZE)+BLOCK_SIZE), BLOCK_SIZE, (i*BLOCK_SIZE)+BLOCK_SIZE, BLOCK_SIZE + (BLOCK_SIZE*gameBoardSize.height));
 	            }
 	            for (int i=0; i<=gameBoardSize.height; i++) {
-	                g.drawLine(BLOCK_SIZE, ((i*BLOCK_SIZE)+BLOCK_SIZE), BLOCK_SIZE*(gameBoardSize.width+1), ((i*BLOCK_SIZE)+BLOCK_SIZE));
+	            	graphics.drawLine(BLOCK_SIZE, ((i*BLOCK_SIZE)+BLOCK_SIZE), BLOCK_SIZE*(gameBoardSize.width+1), ((i*BLOCK_SIZE)+BLOCK_SIZE));
 	            }
 	        }
 
 	        @Override
-	        public void componentResized(ComponentEvent e) {
+	        public void componentResized(ComponentEvent componentEvent) {
 	            // Setup the game board size with proper boundries
 	        	gameBoardSize = new Dimension(getWidth()/BLOCK_SIZE-2, getHeight()/BLOCK_SIZE-2);
 	            updateArraySize();
 	        }
+	        
 	        @Override
-	        public void componentMoved(ComponentEvent e) {}
+	        public void componentMoved(ComponentEvent ce) {}
 	        @Override
-	        public void componentShown(ComponentEvent e) {}
+	        public void componentShown(ComponentEvent ce) {}
 	        @Override
-	        public void componentHidden(ComponentEvent e) {}
+	        public void componentHidden(ComponentEvent ce) {}
 	        @Override
-	        public void mouseClicked(MouseEvent e) {}
+	        public void mouseClicked(MouseEvent me) {}
 	        @Override
-	        public void mousePressed(MouseEvent e) {}
+	        public void mousePressed(MouseEvent me) {}
+	        
 	        @Override
-	        public void mouseReleased(MouseEvent e) {
+	        public void mouseReleased(MouseEvent mouseEvent) {
 	            // Mouse was released (user clicked)
-	            addPoint(e);
+	            addCell(mouseEvent);
 	        }
+	        
 	        @Override
-	        public void mouseEntered(MouseEvent e) {}
+	        public void mouseEntered(MouseEvent me) {}
+	        @Override
+	        public void mouseExited(MouseEvent me) {}
 
 	        @Override
-	        public void mouseExited(MouseEvent e) {}
-
-	        @Override
-	        public void mouseDragged(MouseEvent e) {
+	        public void mouseDragged(MouseEvent mouseEvent) {
 	            // Mouse is being dragged, user wants multiple selections
-	            addPoint(e);
+	            addCell(mouseEvent);
 	        }
+	        
 	        @Override
-	        public void mouseMoved(MouseEvent e) {}
+	        public void mouseMoved(MouseEvent me) {}
 
 	        @Override
 	        public void run() {
 	            boolean[][] gameBoard = new boolean[gameBoardSize.width+2][gameBoardSize.height+2];
-	            for (Point current : point) {
-	                gameBoard[current.x+1][current.y+1] = true;
+	            for (Cell current : cell) {
+	                gameBoard[current.getX()+1][current.getY()+1] = true;
 	            }
-	            ArrayList<Point> survivingCells = new ArrayList<Point>(0);
+	            ArrayList<Cell> survivingCells = new ArrayList<Cell>(0);
+	            
 	            // Iterate through the array, follow game of life rules
 	            for (int i=1; i<gameBoard.length-1; i++) {
 	                for (int j=1; j<gameBoard[0].length-1; j++) {
@@ -314,18 +363,18 @@ public class GameGUI extends JFrame implements ActionListener{
 	                    if (gameBoard[i][j]) {
 	                        // Cell is alive, Can the cell live? (2-3)
 	                        if ((surrounding == 2) || (surrounding == 3)) {
-	                            survivingCells.add(new Point(i-1,j-1));
+	                            survivingCells.add(new Cell(i-1,j-1));
 	                        } 
 	                    } else {
 	                        // Cell is dead, will the cell be given birth? (3)
 		                        if (surrounding == 3) {
-		                            survivingCells.add(new Point(i-1,j-1));
+		                            survivingCells.add(new Cell(i-1,j-1));
 		                        }
 		                    }
 		                }
 		            }
 		            resetBoard();
-		            point.addAll(survivingCells);
+		            cell.addAll(survivingCells);
 		            repaint();
 		            try {
 		                Thread.sleep(1000/movesPerSecond);
