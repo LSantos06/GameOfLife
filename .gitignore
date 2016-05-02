@@ -43,3 +43,4 @@ local.properties
  
 # PDT-specific
 .buildpath
+GameOfLife/src/br/unb/cic/poo/tutorial/GUItest.java

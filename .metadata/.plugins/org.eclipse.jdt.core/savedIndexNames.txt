@@ -18,8 +18,8 @@ INDEX VERSION 1.127+E:\Dropbox\UnB\4° Semestre (1.2016)\Programação Orientada a 
 4207794028.index
 1518773393.index
 1637459807.index
-504399471.index
 158865063.index
+504399471.index
 3317667954.index
 4051341462.index
 2178152368.index
@@ -27,14 +27,14 @@ INDEX VERSION 1.127+E:\Dropbox\UnB\4° Semestre (1.2016)\Programação Orientada a 
 3910820040.index
 79040407.index
 2671173747.index
-2453561351.index
+1620428753.index
 3883842682.index
 2713608433.index
 1918167158.index
 3672986033.index
-2084112449.index
+2453561351.index
 3438990737.index
-1620428753.index
+2084112449.index
 3104682415.index
 3442744962.index
 1897015357.index
