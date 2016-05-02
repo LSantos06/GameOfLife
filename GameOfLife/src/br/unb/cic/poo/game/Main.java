@@ -4,9 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.unb.cic.poo.controller.GameController;
-import br.unb.cic.poo.engine.Conway;
 import br.unb.cic.poo.model.GameEngine;
-import br.unb.cic.poo.tutorial.Triangle;
 import br.unb.cic.poo.view.GameView;
 
 /**
@@ -22,8 +20,6 @@ public class Main {
 		GameController controller = new GameController();
 		
 		Statistics statistics = new Statistics();
-
-		GameEngine engine = new GameEngine(10, 10, statistics);	
 		
 		/*
 		 * Utilizando a injecao de dependencia
@@ -34,7 +30,7 @@ public class Main {
 		 * Nessa implementacao, a estrategia do Conway eh 
 		 * a padrao.
 		 */
-		engine.setStrategy((Conway)context.getBean("conway"));
+		GameEngine engine = (GameEngine)context.getBean("engine");
 		
 		GameView board = new GameView(controller, engine);
 		

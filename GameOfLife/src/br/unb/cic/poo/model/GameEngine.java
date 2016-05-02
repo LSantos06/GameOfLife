@@ -45,12 +45,25 @@ public class GameEngine {
 		this.statistics = statistics;
 	}
 	
+	/* Metodos de acesso a estrategia de jogo */
 	public void setStrategy(Strategy strategy) {
 		this.strategy = strategy;
 	}
 
 	public Strategy getStrategy() {
 		return strategy;
+	}
+	
+	/*
+	 * Injecao de dependencia
+	 * 
+	 */
+	public boolean shouldKeepAlive(int i, int j, Strategy strategy){
+		return this.strategy.shouldKeepAlive(i, j, this);
+	}
+	
+	public boolean shouldRevive(int i, int j, Strategy strategy){
+		return this.strategy.shouldRevive(i, j, this);
 	}
 	
 	/*
@@ -66,10 +79,10 @@ public class GameEngine {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				
-				if (strategy.shouldRevive(i, j, this)) {
+				if (this.shouldRevive(i, j, this.strategy)) {
 					mustRevive.add(cells[i][j]);
 				} 
-				else if ((!strategy.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
+				else if ((!this.shouldKeepAlive(i, j, this.strategy)) && cells[i][j].isAlive()) {
 					mustKill.add(cells[i][j]);
 				}
 			}

@@ -6,7 +6,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.unb.cic.poo.controller.GameController;
 import br.unb.cic.poo.engine.Conway;
-import br.unb.cic.poo.engine.HighLife;
 import br.unb.cic.poo.model.GameEngine;
 
 /**
@@ -77,8 +76,8 @@ public class GameView {
 		switch(option) {
 			case MAKE_CELL_ALIVE : makeCellAlive(); break;
 			case NEXT_GENERATION : nextGeneration(); break;
-			case CONWAY : engine.setStrategy((Conway)context.getBean("conway")); update(); break;
-			case HIGH_LIFE : engine.setStrategy((Conway)context.getBean("highlife")); update();break;
+			case CONWAY : update(); break;
+			case HIGH_LIFE : engine.setStrategy((Conway)context.getBean("highlife")); update(); break;
 			case HALT : halt();
 		}
 	}

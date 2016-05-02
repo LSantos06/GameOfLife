@@ -2,10 +2,28 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
+	<!-- Engine -->
+	<bean id="engine" class="br.unb.cic.poo.model.GameEngine">
+		<!-- Constructor injection -->
+		<constructor-arg index="0" value="10"/>
+		<constructor-arg index="1" value="10"/>
+		<constructor-arg index="2" ref="statistics"/>
+		
+		<!-- Object injection -->
+		<property name="strategy" ref="conway"/>
+	</bean>
+	
+	<!-- Statistics -->
+	<bean id="statistics" class="br.unb.cic.poo.game.Statistics" />
+	
+	<!-- Rules -->
+	<bean id="anneal" class="br.unb.cic.poo.engine.Anneal" />
 	<bean id="conway" class="br.unb.cic.poo.engine.Conway" />
 	<bean id="dayandnight" class="br.unb.cic.poo.engine.DayAndNight" />
 	<bean id="highlife" class="br.unb.cic.poo.engine.HighLife" />
 	<bean id="lifewithoutdeath" class="br.unb.cic.poo.engine.LifeWithoutDeath" />
+	<bean id="morley" class="br.unb.cic.poo.engine.Morley" />
+	<bean id="replicator" class="br.unb.cic.poo.engine.Replicator" />
 	<bean id="seeds" class="br.unb.cic.poo.engine.Seeds" />
 
 </beans>
