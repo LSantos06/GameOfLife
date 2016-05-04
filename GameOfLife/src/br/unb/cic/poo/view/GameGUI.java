@@ -171,53 +171,22 @@ public class GameGUI extends JFrame implements ActionListener{
 			// Exit the game
 			System.exit(0);
 		}
-
-		// Sub-menu Rule 
-		//TODO
-		else if (actionEvent.getSource().equals(ruleList.get(0))){
-			//TODO
-			System.out.println(ruleList.get(0).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(0).getName()));
-			
-		} else if (actionEvent.getSource().equals(ruleList.get(1))){
-			//TODO
-			System.out.println(ruleList.get(1).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(1).getName()));
-			
-		} else if (actionEvent.getSource().equals(ruleList.get(2))){
-			//TODO
-			System.out.println(ruleList.get(2).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(2).getName()));
-			
-		} else if (actionEvent.getSource().equals(ruleList.get(3))){
-			//TODO
-			System.out.println(ruleList.get(3).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(3).getName()));
-
-		} else if (actionEvent.getSource().equals(ruleList.get(4))){
-			//TODO
-			System.out.println(ruleList.get(4).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(4).getName()));
-			
-		} else if (actionEvent.getSource().equals(ruleList.get(5))){
-			//TODO
-			System.out.println(ruleList.get(5).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(5).getName()));
-
-		} else if (actionEvent.getSource().equals(ruleList.get(6))){
-			//TODO
-			System.out.println(ruleList.get(6).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(6).getName()));
-		
-		} else if (actionEvent.getSource().equals(ruleList.get(7))){
-			//TODO
-			System.out.println(ruleList.get(7).getName());
-			engine.setStrategy((Strategy)context.getBean(ruleList.get(7).getName()));
-		} 
 		
 		// Sub-menu Statistics
 		else if (actionEvent.getSource().equals(statisticsView)){
 			//TODO Statistics
+			System.out.println("Statistcs");
+		}
+
+		// Sub-menu Rule
+		else {
+		//TODO
+			for(int index = 0; index < ruleList.size(); index++){
+				if (actionEvent.getSource().equals(ruleList.get(index))){
+					System.out.println(ruleList.get(index).getName());
+					engine.setStrategy((Strategy)context.getBean(ruleList.get(index).getName()));
+				}
+			}
 		}
 	}
     
