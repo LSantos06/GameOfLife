@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class DayAndNight implements Strategy{
 	@Override
 	public String getName() {
-		return "DayAndNight";
+		return "DayAndNight (B3678/S34678)";
 	}
 	
 	@Override

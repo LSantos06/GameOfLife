@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class Diamoeba implements Strategy{
 	@Override
 	public String getName() {
-		return "Diamoeba";
+		return "Diamoeba (B35678/S5678)";
 	}
 	
 	@Override

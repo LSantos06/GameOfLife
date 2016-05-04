@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class Replicator implements Strategy{
 	@Override
 	public String getName() {
-		return "Replicator";
+		return "Replicator (B1357/S1357)";
 	}
 	
 	@Override

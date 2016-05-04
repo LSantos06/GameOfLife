@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class Seeds implements Strategy{
 	@Override
 	public String getName() {
-		return "LiveFreeOrDie";
+		return "Seeds (B2/S)";
 	}
 
 	@Override

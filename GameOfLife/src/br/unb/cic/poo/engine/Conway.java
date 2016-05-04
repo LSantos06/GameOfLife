@@ -18,7 +18,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class Conway implements Strategy{
 	@Override
 	public String getName() {
-		return "Conway";
+		return "Conway (B3/S23)";
 	}
 	
 	@Override

@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class HighLife extends Conway {
 	@Override
 	public String getName() {
-		return "HighLife"; 
+		return "HighLife (B36/S23)"; 
 	}
 	
 	@Override

@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class Anneal implements Strategy{
 	@Override
 	public String getName() {
-		return "Anneal";
+		return "Anneal (B4678/S35678)";
 	}
 	
 	@Override

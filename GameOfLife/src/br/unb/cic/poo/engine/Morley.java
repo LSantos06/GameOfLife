@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class Morley implements Strategy{
 	@Override
 	public String getName() {
-		return "Morley";
+		return "Morley (B368/S245)";
 	}
 	
 	@Override

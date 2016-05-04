@@ -1545,3 +1545,204 @@ Java Model Exception: Java Model Status [GameBoard.java [in br.unb.cic.poo.view 
 !MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
 !SUBENTRY 1 org.eclipse.ui 4 0 2016-05-02 19:45:36.643
 !MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.jdt.core 4 969 2016-05-02 21:06:30.598
+!MESSAGE <anonymous #1> [in main(String[]) [in App [in [Working copy] App.java [in br.unb.cic.poo.tutorial [in src [in GameOfLife]]]]]] does not exist
+!SESSION 2016-05-02 21:22:29.318 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_74
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-02 21:23:09.503
+!MESSAGE Project facet jst.web has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-02 21:23:09.566
+!MESSAGE Project facet jst.webfragment has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+!SESSION 2016-05-03 21:19:40.684 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_74
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-03 21:19:59.377
+!MESSAGE Project facet jst.web has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-03 21:19:59.390
+!MESSAGE Project facet jst.webfragment has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:20:25.332
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.refactorBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:20:25.332
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:20:25.373
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.moveBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:20:25.373
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:20:25.377
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:20:25.377
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:20:25.515
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.refactorBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:20:25.515
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:20:25.520
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.moveBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:20:25.520
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:20:25.524
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:20:25.524
+!MESSAGE Action must implement IEditorActionDelegate
+!SESSION 2016-05-03 21:45:47.826 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_74
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:46:16.861
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.refactorBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:46:16.861
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:46:16.950
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.moveBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:46:16.950
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:46:16.954
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:46:16.954
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-03 21:46:17.131
+!MESSAGE Project facet jst.web has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-03 21:46:17.135
+!MESSAGE Project facet jst.webfragment has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:46:17.276
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.refactorBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:46:17.276
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:46:17.280
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.moveBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:46:17.280
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 21:46:17.284
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 21:46:17.284
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 0 2016-05-03 22:12:42.094
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.swt.SWTException: Failed to execute runnable (org.eclipse.swt.SWTException: Widget is disposed)
+	at org.eclipse.swt.SWT.error(SWT.java:4491)
+	at org.eclipse.swt.SWT.error(SWT.java:4406)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:138)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4155)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3772)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:694)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:606)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+Caused by: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4491)
+	at org.eclipse.swt.SWT.error(SWT.java:4406)
+	at org.eclipse.swt.SWT.error(SWT.java:4377)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:354)
+	at org.eclipse.swt.widgets.Control.setFocus(Control.java:3354)
+	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractAnnotationHover$AnnotationInformationControl.setFocus(AbstractAnnotationHover.java:207)
+	at org.eclipse.jface.text.AbstractInformationControlManager.showInformationControl(AbstractInformationControlManager.java:1276)
+	at org.eclipse.jface.internal.text.StickyHoverManager.showInformationControl(StickyHoverManager.java:295)
+	at org.eclipse.jface.internal.text.InformationControlReplacer.showInformationControl(InformationControlReplacer.java:162)
+	at org.eclipse.jface.text.AbstractInformationControlManager.internalShowInformationControl(AbstractInformationControlManager.java:1164)
+	at org.eclipse.jface.text.AbstractInformationControlManager.presentInformation(AbstractInformationControlManager.java:1150)
+	at org.eclipse.jface.text.AbstractInformationControlManager.setInformation(AbstractInformationControlManager.java:418)
+	at org.eclipse.jface.internal.text.InformationControlReplacer.computeInformation(InformationControlReplacer.java:114)
+	at org.eclipse.jface.text.AbstractInformationControlManager.doShowInformation(AbstractInformationControlManager.java:1131)
+	at org.eclipse.jface.text.AbstractInformationControlManager.showInformation(AbstractInformationControlManager.java:1121)
+	at org.eclipse.jface.internal.text.InformationControlReplacer.replaceInformationControl(InformationControlReplacer.java:99)
+	at org.eclipse.jface.text.AbstractInformationControlManager.replaceInformationControl(AbstractInformationControlManager.java:1298)
+	at org.eclipse.jface.text.AbstractHoverInformationControlManager.replaceInformationControl(AbstractHoverInformationControlManager.java:809)
+	at org.eclipse.jface.text.TextViewerHoverManager.replaceInformationControl(TextViewerHoverManager.java:309)
+	at org.eclipse.jface.text.AbstractHoverInformationControlManager$2.run(AbstractHoverInformationControlManager.java:327)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	... 23 more
+!SESSION 2016-05-03 22:14:39.789 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_74
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 22:14:47.299
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.refactorBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 22:14:47.299
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 22:14:47.306
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.moveBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 22:14:47.306
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 22:14:47.310
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 22:14:47.310
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-03 22:14:47.399
+!MESSAGE Project facet jst.web has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2016-05-03 22:14:47.407
+!MESSAGE Project facet jst.webfragment has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 22:14:47.520
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.refactorBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 22:14:47.520
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 22:14:47.524
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.refactoring.context.moveBeanClassAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 22:14:47.524
+!MESSAGE Action must implement IEditorActionDelegate
+
+!ENTRY org.eclipse.ui 4 4 2016-05-03 22:14:47.527
+!MESSAGE Could not create action delegate for id: org.springframework.ide.eclipse.beans.ui.editor.actions.refactorPropertyElementAction
+!SUBENTRY 1 org.eclipse.ui 4 0 2016-05-03 22:14:47.527
+!MESSAGE Action must implement IEditorActionDelegate

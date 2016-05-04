@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.unb.cic.poo.controller.GameController;
+import br.unb.cic.poo.engine.Rules;
 import br.unb.cic.poo.engine.Strategy;
 import br.unb.cic.poo.game.Cell;
 import br.unb.cic.poo.game.Statistics;
@@ -23,10 +24,16 @@ public class GameGUI extends JFrame implements ActionListener{
 	
 	private JMenuBar menu;
     private JMenu game, rule, statistics;
+    
     private JMenuItem gamePlay, gameStop, gameReset, gameMovesPerSecond, gameAutofill, gameExit;
-    private JMenuItem ruleAnneal, ruleConway, ruleDayAndNight, ruleDiamoeba, ruleHighLife, ruleLifeWithoutDeath, ruleMorley, ruleReplicator, ruleSeeds;
+    
+    private Rules rules;
+    private ArrayList<JMenuItem> ruleList = new ArrayList<JMenuItem>(0);
+    
     private JMenuItem statisticsView;
-    private int movesPerSecond = 3;
+    
+    private int movesPerSecond = 10;
+    
     private GameBoard gameBoard;
     private Thread gameOfLife;
     
@@ -55,6 +62,9 @@ public class GameGUI extends JFrame implements ActionListener{
     }
     
     public GameGUI(GameController controller, GameEngine engine){
+		// Dependency Injection
+    	ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
+
         // Setting up the menu
         menu = new JMenuBar();
         setJMenuBar(menu);
@@ -98,42 +108,17 @@ public class GameGUI extends JFrame implements ActionListener{
         game.add(gameExit);       
         
         // Sub-menu of the column Rule
-        ruleAnneal = new JMenuItem("Anneal (B4678/S35678)");
-        ruleAnneal.addActionListener(this);
-
-        ruleConway = new JMenuItem("Conway (B3/S23)");
-        ruleConway.addActionListener(this);
-
-        ruleDayAndNight = new JMenuItem("DayAndNight (B3678/S34678)");
-        ruleDayAndNight.addActionListener(this);
+        rules = (Rules)context.getBean("rules");
         
-        ruleDiamoeba = new JMenuItem("Diamoeba (B35678/S5678)");
-        ruleDiamoeba.addActionListener(this);
-
-        ruleHighLife = new JMenuItem("High Life (B36/S23)");
-        ruleHighLife.addActionListener(this);
-        
-        ruleLifeWithoutDeath = new JMenuItem("Life Without Death (B3/S012345678)");
-        ruleLifeWithoutDeath.addActionListener(this);
-        
-        ruleMorley = new JMenuItem("Morley (B368/S245)");
-        ruleMorley.addActionListener(this);
-        
-        ruleReplicator = new JMenuItem("Replicator (B1357/S1357)");
-        ruleReplicator.addActionListener(this);
-        
-        ruleSeeds = new JMenuItem("Seeds (B2/S)");
-        ruleSeeds.addActionListener(this);
-        
-        rule.add(ruleAnneal);
-        rule.add(ruleConway);
-        rule.add(ruleDayAndNight);
-        rule.add(ruleDiamoeba);
-        rule.add(ruleHighLife);
-        rule.add(ruleLifeWithoutDeath);
-        rule.add(ruleMorley);
-        rule.add(ruleReplicator);
-        rule.add(ruleSeeds);
+        // For each rule, add a button
+        for(Strategy currentRule: rules.getStrategies()){
+        	ruleList.add(new JMenuItem(currentRule.getName()));
+        	
+        }
+        for(JMenuItem currentItem: ruleList){
+        	currentItem.addActionListener(this);
+        	rule.add(currentItem);
+        }
         
         // Sub-menu of the column Statistics
         statisticsView = new JMenuItem("View");
@@ -167,7 +152,7 @@ public class GameGUI extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		// Dependency injection
-		ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
+		//ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
 		
 		// Sub-menu Game
 		if (actionEvent.getSource().equals(gamePlay)){
@@ -190,41 +175,8 @@ public class GameGUI extends JFrame implements ActionListener{
 		}
 		
 		// Sub-menu Rule
-		else if (actionEvent.getSource().equals(ruleAnneal)){
-			//TODO Anneal
-			engine.setStrategy((Strategy)context.getBean("anneal"));
-			
-		} else if (actionEvent.getSource().equals(ruleConway)){
-			//TODO Conway
-			
-			
-		} else if (actionEvent.getSource().equals(ruleDayAndNight)){
-			//TODO DayAndNight
-			engine.setStrategy((Strategy)context.getBean("dayandnight"));
-			
-		} else if (actionEvent.getSource().equals(ruleDiamoeba)){
-			//TODO Diamoeba
-			engine.setStrategy((Strategy)context.getBean("diamoeba"));
-			
-		} else if (actionEvent.getSource().equals(ruleHighLife)){
-			//TODO HighLife
-			engine.setStrategy((Strategy)context.getBean("highlife"));
-			
-		} else if (actionEvent.getSource().equals(ruleLifeWithoutDeath)){
-			//TODO LifeWithoutDeath
-			engine.setStrategy((Strategy)context.getBean("lifewithoutdeath"));
-			
-		} else if (actionEvent.getSource().equals(ruleMorley)){
-			//TODO Morley
-			engine.setStrategy((Strategy)context.getBean("morley"));
-			
-		} else if (actionEvent.getSource().equals(ruleReplicator)){
-			//TODO Replicator
-			engine.setStrategy((Strategy)context.getBean("replicator"));
-			
-		} else if (actionEvent.getSource().equals(ruleSeeds)){
-			//TODO Seeds
-			engine.setStrategy((Strategy)context.getBean("seeds"));
+		else if (actionEvent.getSource().equals(ruleList)){
+			//TODO 
 		}
 		
 		// Sub-menu Statistics
@@ -296,6 +248,7 @@ public class GameGUI extends JFrame implements ActionListener{
 	                for (Cell newCell : cell) {
 	                    // Draw new point
 	                	graphics.setColor(Color.darkGray);
+	                	//TODO Error
 	                	graphics.fillRect(BLOCK_SIZE + (BLOCK_SIZE*newCell.getX()), BLOCK_SIZE + (BLOCK_SIZE*newCell.getY()), BLOCK_SIZE, BLOCK_SIZE);
 	                }
 	            } catch (ConcurrentModificationException cme) {}
@@ -378,18 +331,17 @@ public class GameGUI extends JFrame implements ActionListener{
 		                        if (surrounding == 3) {
 		                            survivingCells.add(new Cell(i-1,j-1));
 		                        }
-		                    }
-		                }
-		            }
-		            resetBoard();
-		            cell.addAll(survivingCells);
-		            repaint();
-		            try {
-		                Thread.sleep(1000/movesPerSecond);
-		                run();
-		            } catch (InterruptedException ex) {}
-		        }
-		    }
-
-    
+	                    }
+	                }
+	            }
+	            resetBoard();
+	            cell.addAll(survivingCells);
+	            repaint();
+	            try {
+	                Thread.sleep(1000/movesPerSecond);
+	                run();
+	            } catch (InterruptedException ex) {}
+	            
+	        }
+	  }
 }

@@ -13,7 +13,7 @@ import br.unb.cic.poo.model.GameEngine;
 public class LifeWithoutDeath extends Conway{
 	@Override
 	public String getName() {
-		return "LifeWithoutDeath";
+		return "LifeWithoutDeath (B3/S012345678)";
 	}
 	
 	@Override

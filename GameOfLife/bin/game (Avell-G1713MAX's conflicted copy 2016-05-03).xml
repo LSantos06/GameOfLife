@@ -2,23 +2,21 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<!-- List of rules -->
-	<bean id="rules" class="br.unb.cic.poo.engine.Rules" scope="prototype">
-		<property name="strategies">
-			<list>
-				<ref bean="anneal"/>
-				<ref bean="conway"/>
-				<ref bean="dayandnight"/>
-				<ref bean="highlife"/>
-				<ref bean="lifewithoutdeath"/>
-				<ref bean="morley"/>
-				<ref bean="replicator"/>
-				<ref bean="seeds"/>
-			</list>
-		</property>
+	<!-- Engine -->
+	<bean id="engine" class="br.unb.cic.poo.model.GameEngine" scope="prototype">
+		<!-- Constructor injection -->
+		<constructor-arg index="0" value="10"/>
+		<constructor-arg index="1" value="10"/>
+		<constructor-arg index="2" ref="statistics"/>
+		
+		<!-- Object injection -->
+		<property name="strategy" ref="conway"/>
 	</bean>
-
-	<!-- Rules -->	
+	
+	<!-- Statistics -->
+	<bean id="statistics" class="br.unb.cic.poo.game.Statistics" scope="prototype"/>
+	
+	<!-- Rules -->
 	<bean id="anneal" class="br.unb.cic.poo.engine.Anneal" scope="prototype"/>
 	<bean id="conway" class="br.unb.cic.poo.engine.Conway" scope="prototype"/>
 	<bean id="dayandnight" class="br.unb.cic.poo.engine.DayAndNight" scope="prototype"/>
