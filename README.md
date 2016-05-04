@@ -9,10 +9,11 @@ Baseado nos códigos disponibilizados no ambiente moodle da disciplina as seguin
 
 * Implemente uma **interface gráfica** para o GameOfLife reusando as classes existentes. A interface gráfica pode ser baseada em *Java Swing*, *SWT* ou *Android*.
 
-* Torne a implementação mais extensível com o uso do padrão **injeção de dependância (ID)**, de tal forma que os objetos que implementam os diferentes algoritmos para calcular as regras de derivação sejam injetados no programa (em vez de diretamente instanciados). Alternativas tecnológicas: *Spring framework (apenas a parte de ID)*, *Google Guice* ou *Java reflection (introspecção)*.
+* Torne a implementação mais extensível com o uso do padrão **injeção de dependência (ID)**, de tal forma que os objetos que implementam os diferentes algoritmos para calcular as regras de derivação sejam injetados no programa (em vez de diretamente instanciados). Alternativas tecnológicas: *Spring framework (apenas a parte de ID)*, *Google Guice* ou *Java reflection (introspecção)*.
 
-##### Intruções de execução:
+##### Intruções de execução (Utilizando a IDE *Eclipse*):
 * Adicione as bibliotecas presentes na pasta *GameOfLife/libs* ao projeto na IDE.
+* Utilize a *JRE System Library [JavaSE-1.8]*.
 
 ##### Material de estudo:
 [Cave of Programming (YouTube) - *Java Swing (GUI)*](https://www.youtube.com/playlist?list=PL3D7046DF2257751F)
