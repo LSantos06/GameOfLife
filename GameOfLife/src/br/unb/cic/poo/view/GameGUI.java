@@ -22,6 +22,9 @@ public class GameGUI extends JFrame implements ActionListener{
     private static final Dimension MINIMUM_WINDOW_SIZE = new Dimension(400, 400);
     private static final int BLOCK_SIZE = 10;
 	
+	// Dependency Injection
+	private static final ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
+    
 	private JMenuBar menu;
     private JMenu game, rule, statistics;
     
@@ -62,9 +65,6 @@ public class GameGUI extends JFrame implements ActionListener{
     }
     
     public GameGUI(GameController controller, GameEngine engine){
-		// Dependency Injection
-    	ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
-
         // Setting up the menu
         menu = new JMenuBar();
         setJMenuBar(menu);
@@ -112,8 +112,9 @@ public class GameGUI extends JFrame implements ActionListener{
         
         // For each rule, add a button
         for(Strategy currentRule: rules.getStrategies()){
-        	ruleList.add(new JMenuItem(currentRule.getName()));
-        	
+        	JMenuItem item = new JMenuItem(currentRule.getName());
+        	item.setName(currentRule.getBeanName());
+        	ruleList.add(item);
         }
         for(JMenuItem currentItem: ruleList){
         	currentItem.addActionListener(this);
@@ -151,9 +152,6 @@ public class GameGUI extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-		// Dependency injection
-		//ApplicationContext context = new ClassPathXmlApplicationContext("game.xml");
-		
 		// Sub-menu Game
 		if (actionEvent.getSource().equals(gamePlay)){
 			//TODO Play the game
@@ -173,11 +171,49 @@ public class GameGUI extends JFrame implements ActionListener{
 			// Exit the game
 			System.exit(0);
 		}
+
+		// Sub-menu Rule 
+		//TODO
+		else if (actionEvent.getSource().equals(ruleList.get(0))){
+			//TODO
+			System.out.println(ruleList.get(0).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(0).getName()));
+			
+		} else if (actionEvent.getSource().equals(ruleList.get(1))){
+			//TODO
+			System.out.println(ruleList.get(1).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(1).getName()));
+			
+		} else if (actionEvent.getSource().equals(ruleList.get(2))){
+			//TODO
+			System.out.println(ruleList.get(2).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(2).getName()));
+			
+		} else if (actionEvent.getSource().equals(ruleList.get(3))){
+			//TODO
+			System.out.println(ruleList.get(3).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(3).getName()));
+
+		} else if (actionEvent.getSource().equals(ruleList.get(4))){
+			//TODO
+			System.out.println(ruleList.get(4).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(4).getName()));
+			
+		} else if (actionEvent.getSource().equals(ruleList.get(5))){
+			//TODO
+			System.out.println(ruleList.get(5).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(5).getName()));
+
+		} else if (actionEvent.getSource().equals(ruleList.get(6))){
+			//TODO
+			System.out.println(ruleList.get(6).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(6).getName()));
 		
-		// Sub-menu Rule
-		else if (actionEvent.getSource().equals(ruleList)){
-			//TODO 
-		}
+		} else if (actionEvent.getSource().equals(ruleList.get(7))){
+			//TODO
+			System.out.println(ruleList.get(7).getName());
+			engine.setStrategy((Strategy)context.getBean(ruleList.get(7).getName()));
+		} 
 		
 		// Sub-menu Statistics
 		else if (actionEvent.getSource().equals(statisticsView)){

@@ -12,6 +12,9 @@ public interface Strategy {
 	/** Retorna o nome da regra de derivacao */	
 	public String getName();
 	
+	/** Retorna o nome do bean associado a regra de derivacao */
+	public String getBeanName();
+	
 	/**
 	 * Verifica se uma celula (na posica (i, j)) deve 
 	 * ser mantida viva. 

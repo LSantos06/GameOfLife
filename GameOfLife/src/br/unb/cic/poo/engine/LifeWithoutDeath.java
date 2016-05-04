@@ -17,6 +17,11 @@ public class LifeWithoutDeath extends Conway{
 	}
 	
 	@Override
+	public String getBeanName(){
+		return "lifewithoutdeath";
+	}
+	
+	@Override
 	public boolean shouldKeepAlive(int i, int j, GameEngine engine) {
 		return true;
 	}

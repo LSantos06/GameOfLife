@@ -17,6 +17,11 @@ public class Replicator implements Strategy{
 	}
 	
 	@Override
+	public String getBeanName(){
+		return "replicator";
+	}
+	
+	@Override
 	public boolean shouldKeepAlive(int i, int j, GameEngine engine) {
 		return engine.isCellAlive(i, j) && 
 				engine.numberOfNeighborhoodAliveCells(i, j) == 1 || 

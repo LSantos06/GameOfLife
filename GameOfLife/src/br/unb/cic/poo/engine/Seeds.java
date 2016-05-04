@@ -17,6 +17,11 @@ public class Seeds implements Strategy{
 	}
 
 	@Override
+	public String getBeanName(){
+		return "seeds";
+	}
+	
+	@Override
 	public boolean shouldKeepAlive(int i, int j, GameEngine engine) {
 		return engine.numberOfNeighborhoodAliveCells(i, j) == 0;
 	}

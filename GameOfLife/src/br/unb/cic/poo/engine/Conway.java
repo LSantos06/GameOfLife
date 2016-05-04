@@ -22,6 +22,11 @@ public class Conway implements Strategy{
 	}
 	
 	@Override
+	public String getBeanName(){
+		return "conway";
+	}
+	
+	@Override
 	public boolean shouldKeepAlive(int i, int j, GameEngine engine) {
 		return engine.isCellAlive(i, j) && 
 				engine.numberOfNeighborhoodAliveCells(i, j) == 2 || 

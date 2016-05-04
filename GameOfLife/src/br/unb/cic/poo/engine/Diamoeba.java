@@ -17,6 +17,11 @@ public class Diamoeba implements Strategy{
 	}
 	
 	@Override
+	public String getBeanName(){
+		return "diamoeba";
+	}
+	
+	@Override
 	public boolean shouldKeepAlive(int i, int j, GameEngine engine) {
 		return engine.isCellAlive(i, j) && 
 				engine.numberOfNeighborhoodAliveCells(i, j) == 5 ||
