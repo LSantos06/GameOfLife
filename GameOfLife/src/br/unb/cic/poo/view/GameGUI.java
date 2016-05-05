@@ -28,7 +28,7 @@ public class GameGUI extends JFrame implements ActionListener{
 	private JMenuBar menu;
 	private JMenu game, rule, statistics;
 
-	private JMenuItem gamePlay, gameStop, gameReset, gameMovesPerSecond, gameAutoFill, gameExit;
+	private JMenuItem gamePlay, gameStop, gameReset, gameNextGeneration, gameMovesPerSecond, gameAutoFill, gameExit;
 
 	private Rules rules;
 	private ArrayList<JMenuItem> ruleList = new ArrayList<JMenuItem>(0);
@@ -92,6 +92,9 @@ public class GameGUI extends JFrame implements ActionListener{
 
 		gameReset = new JMenuItem("Reset");
 		gameReset.addActionListener(this);
+		
+		gameNextGeneration = new JMenuItem("Next Generation");
+		gameNextGeneration.addActionListener(this);
 
 		gameMovesPerSecond = new JMenuItem("Moves per second");
 		gameMovesPerSecond.addActionListener(this);
@@ -105,6 +108,8 @@ public class GameGUI extends JFrame implements ActionListener{
 		game.add(gamePlay);
 		game.add(gameStop);
 		game.add(gameReset);
+		game.add(new JSeparator());
+		game.add(gameNextGeneration);
 		game.add(new JSeparator());
 		game.add(gameMovesPerSecond);
 		game.add(gameAutoFill);
@@ -143,12 +148,16 @@ public class GameGUI extends JFrame implements ActionListener{
 		if (isBeingPlayed) {
 			gamePlay.setEnabled(false);
 			gameStop.setEnabled(true);
+			
+			gameNextGeneration.setEnabled(false);
 
 			gameOfLife = new Thread(gameBoard);
 			gameOfLife.start();
 		} else {
 			gamePlay.setEnabled(true);
 			gameStop.setEnabled(false);
+			
+			gameNextGeneration.setEnabled(true);
 
 			gameOfLife.interrupt();
 		}
@@ -169,7 +178,12 @@ public class GameGUI extends JFrame implements ActionListener{
 			// Reset the game
 			gameBoard.resetBoard();
 			gameBoard.repaint();
-
+			
+		} else if (actionEvent.getSource().equals(gameNextGeneration)){
+			// Computes the next generation
+			setGameBeingPlayed(true);
+			setGameBeingPlayed(false);
+			
 		} else if (actionEvent.getSource().equals(gameMovesPerSecond)){
 			// Defines the moves per second
 			final JFrame frameGameMovesPerSecond = new JFrame();
