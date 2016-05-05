@@ -80,12 +80,12 @@ public class GameEngine {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				
-				if (strategy.shouldRevive(i, j, this)) {
-					mustRevive.add(cells[i][j]);
-				} 
-				else if ((!strategy.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
-					mustKill.add(cells[i][j]);
-				}
+//				if (strategy.shouldRevive(i, j, this)) {
+//					mustRevive.add(cells[i][j]);
+//				} 
+//				else if ((!strategy.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
+//					mustKill.add(cells[i][j]);
+//				}
 			}
 		}
 		

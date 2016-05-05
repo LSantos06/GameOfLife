@@ -52,6 +52,8 @@ public class GameGUI extends JFrame implements ActionListener{
 
     	//TODO
     	GameEngine engine = new GameEngine(10, 10, gameStatistics);
+    	// Default strategy: conway
+    	engine.setStrategy((Strategy)context.getBean("conway"));
     	
         // Setup the swing specifics
         JFrame game = new GameGUI(controller, engine);
@@ -322,48 +324,22 @@ public class GameGUI extends JFrame implements ActionListener{
 	                gameBoard[current.getX()+1][current.getY()+1] = true;
 	            }	            
 	        	
+	            // Creating the list of survivingCells
 	            ArrayList<Cell> survivingCells = new ArrayList<Cell>(0);
 	            
-	            // Iterate through the array, follow game of life rules
-	            for (int i=1; i<gameBoard[0].length-1; i++) {
-	                for (int j=1; j<gameBoard[0].length-1; j++) {
-	                
-	                    int surrounding = 0;
-	                    
-	                    if (gameBoard[i-1][j-1]) { surrounding++; }
-	                    if (gameBoard[i-1][j])   { surrounding++; }
-	                    if (gameBoard[i-1][j+1]) { surrounding++; }
-	                    if (gameBoard[i][j-1])   { surrounding++; }
-	                    if (gameBoard[i][j+1])   { surrounding++; }
-	                    if (gameBoard[i+1][j-1]) { surrounding++; }
-	                    if (gameBoard[i+1][j])   { surrounding++; }
-	                    if (gameBoard[i+1][j+1]) { surrounding++; }
-	                    
-	                    if (gameBoard[i][j]) {
-	                        // Cell is alive, Can the cell live? (2-3)
-	                        if ((surrounding == 2) || (surrounding == 3)) {
-	                            survivingCells.add(new Cell(i-1,j-1));
-	                        } 
-	                    } else {
-	                        // Cell is dead, will the cell be given birth? (3)
-		                        if (surrounding == 3) {
-		                            survivingCells.add(new Cell(i-1,j-1));
-		                        }
-	                    }
-	                }
-	            }
+	            // Getting the strategy
+	            survivingCells = engine.getStrategy().survivors(gameBoard, survivingCells);
 	            
-	            
-	            
+	            // Adding the survivingCells to the board
 	            resetBoard();
 	            cell.addAll(survivingCells);
 	            repaint();
+	            
 	            try {
 	                Thread.sleep(1000/movesPerSecond);
 	                run();
 	            } catch (InterruptedException ex) {}
-
-	            
+            
 	        }
 	  }
 }
