@@ -1963,3 +1963,12 @@ org.eclipse.core.runtime.CoreException: The fix 'Add type arguments to 'JComboBo
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
 !SUBENTRY 1 org.eclipse.jdt.ui 4 0 2016-05-04 22:59:56.162
 !MESSAGE The fix 'Add type arguments to 'JComboBox'' generated a null change.
+
+!ENTRY org.eclipse.jdt.core 4 969 2016-05-04 23:30:54.089
+!MESSAGE actionPerformed(ActionEvent) [in <anonymous #2> [in actionPerformed(ActionEvent) [in GameGUI [in [Working copy] GameGUI.java [in br.unb.cic.poo.view [in src [in GameOfLife]]]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2016-05-04 23:31:41.453
+!MESSAGE actionPerformed(ActionEvent) [in <anonymous #2> [in actionPerformed(ActionEvent) [in GameGUI [in [Working copy] GameGUI.java [in br.unb.cic.poo.view [in src [in GameOfLife]]]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2016-05-04 23:31:58.296
+!MESSAGE actionPerformed(ActionEvent) [in <anonymous #2> [in actionPerformed(ActionEvent) [in GameGUI [in [Working copy] GameGUI.java [in br.unb.cic.poo.view [in src [in GameOfLife]]]]]]] does not exist

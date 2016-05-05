@@ -28,7 +28,7 @@ public class GameGUI extends JFrame implements ActionListener{
 	private JMenuBar menu;
 	private JMenu game, rule, statistics;
 
-	private JMenuItem gamePlay, gameStop, gameReset, gameMovesPerSecond, gameAutofill, gameExit;
+	private JMenuItem gamePlay, gameStop, gameReset, gameMovesPerSecond, gameAutoFill, gameExit;
 
 	private Rules rules;
 	private ArrayList<JMenuItem> ruleList = new ArrayList<JMenuItem>(0);
@@ -96,8 +96,8 @@ public class GameGUI extends JFrame implements ActionListener{
 		gameMovesPerSecond = new JMenuItem("Moves per second");
 		gameMovesPerSecond.addActionListener(this);
 
-		gameAutofill = new JMenuItem("Autofill");
-		gameAutofill.addActionListener(this);
+		gameAutoFill = new JMenuItem("Autofill");
+		gameAutoFill.addActionListener(this);
 
 		gameExit = new JMenuItem("Exit");
 		gameExit.addActionListener(this);
@@ -107,7 +107,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		game.add(gameReset);
 		game.add(new JSeparator());
 		game.add(gameMovesPerSecond);
-		game.add(gameAutofill);
+		game.add(gameAutoFill);
 		game.add(gameExit);       
 
 		// Sub-menu of the column Rule
@@ -173,7 +173,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		} else if (actionEvent.getSource().equals(gameMovesPerSecond)){
 			// Defines the moves per second
 			final JFrame frameGameMovesPerSecond = new JFrame();
-			frameGameMovesPerSecond.setTitle("Game");
+			frameGameMovesPerSecond.setTitle("Moves Per Second");
 			frameGameMovesPerSecond.setSize(300,60);
 			frameGameMovesPerSecond.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - frameGameMovesPerSecond.getWidth())/2, 
 					(Toolkit.getDefaultToolkit().getScreenSize().height - frameGameMovesPerSecond.getHeight())/2);
@@ -187,7 +187,7 @@ public class GameGUI extends JFrame implements ActionListener{
 			panelGameMovesPerSecond.add(new JLabel("Number of moves per second:"));
 
 			Integer[] secondOptions = {1,5,10,15,25,50,100};	
-			final JComboBox<Integer> comboBoxSeconds = new JComboBox<>(secondOptions);
+			final JComboBox<Integer> comboBoxSeconds = new JComboBox<Integer>(secondOptions);
 
 			panelGameMovesPerSecond.add(comboBoxSeconds);
 
@@ -201,9 +201,38 @@ public class GameGUI extends JFrame implements ActionListener{
 			});
 			frameGameMovesPerSecond.setVisible(true);
 
-		} else if (actionEvent.getSource().equals(gameAutofill)){
-			//TODO Generates cells randomly
-			System.out.println("autofill");
+		} else if (actionEvent.getSource().equals(gameAutoFill)){
+			// Generates cells randomly
+			final JFrame frameAutoFill = new JFrame();
+			frameAutoFill.setTitle("AutoFill");
+			frameAutoFill.setSize(360,60);
+			frameAutoFill.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - frameAutoFill.getWidth())/2, 
+	                (Toolkit.getDefaultToolkit().getScreenSize().height - frameAutoFill.getHeight())/2);
+			frameAutoFill.setResizable(false);
+			
+			JPanel panelAutoFill = new JPanel();
+			panelAutoFill.setOpaque(false);
+			
+			frameAutoFill.add(panelAutoFill);
+			
+			panelAutoFill.add(new JLabel("What percentage should be filled? "));
+			
+			Object[] percentageOptions = {"Select",5,10,15,20,25,30,40,50,60,70,80,90,95};
+			final JComboBox<Object> comboBoxPercent = new JComboBox<Object>(percentageOptions);
+			
+			panelAutoFill.add(comboBoxPercent);
+			
+			comboBoxPercent.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent actionEvent) {
+					if(comboBoxPercent.getSelectedIndex() > 0){
+						gameBoard.resetBoard();
+						gameBoard.randomlyFillBoard((Integer)comboBoxPercent.getSelectedItem());
+						frameAutoFill.dispose();
+					}
+				}			
+			});
+			frameAutoFill.setVisible(true);
 
 		} else if (actionEvent.getSource().equals(gameExit)){
 			// Exit the game
@@ -369,7 +398,7 @@ public class GameGUI extends JFrame implements ActionListener{
 			try {
 				Thread.sleep(1000/movesPerSecond);
 				run();
-			} catch (InterruptedException ex) {}
+			} catch (InterruptedException interruptedException) {}
 
 		}
 	}
