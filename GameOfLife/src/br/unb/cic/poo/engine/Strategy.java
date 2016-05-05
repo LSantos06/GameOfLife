@@ -15,18 +15,7 @@ public interface Strategy {
 	/** Retorna o nome do bean associado a regra de derivacao */
 	public String getBeanName();
 	
-	/**
-	 * Verifica se uma celula (na posica (i, j)) deve 
-	 * ser mantida viva. 
-	 * 
-	 * @param i posicao da celula na i-esima linha
-	 * @param j posicao da celula na j-esima coluna 
-	 * 
-	 * @param engine referencia para a Game Engine
-	 * 
-	 * @return <i>true</i> caso a celula deva ser mantida viva. 
-	 * 		   <i>false</i> caso contrario. 
-	 */
+	
 	public boolean shouldKeepAlive(int i, int j, GameEngine engine);
 	
 	/**

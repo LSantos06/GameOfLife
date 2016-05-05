@@ -49,6 +49,7 @@ public class GameGUI extends JFrame implements ActionListener{
     	
     	// Initializing Controller and Engine
     	GameController controller = new GameController();
+
     	//TODO
     	GameEngine engine = new GameEngine(10, 10, gameStatistics);
     	
@@ -136,16 +137,17 @@ public class GameGUI extends JFrame implements ActionListener{
 		this.engine = engine;
     }
     
-    //TODO
     public void setGameBeingPlayed(boolean isBeingPlayed) {
         if (isBeingPlayed) {
             gamePlay.setEnabled(false);
             gameStop.setEnabled(true);
+            
             gameOfLife = new Thread(gameBoard);
             gameOfLife.start();
         } else {
             gamePlay.setEnabled(true);
             gameStop.setEnabled(false);
+            
             gameOfLife.interrupt();
         }
     }
@@ -156,13 +158,16 @@ public class GameGUI extends JFrame implements ActionListener{
 		if (actionEvent.getSource().equals(gamePlay)){
 			//TODO Play the game
 			setGameBeingPlayed(true);
+			
 		} else if (actionEvent.getSource().equals(gameStop)){
 			//TODO Stop the game
 			setGameBeingPlayed(false);
+			
 		} else if (actionEvent.getSource().equals(gameReset)){
 			//TODO Reset the game
 			gameBoard.resetBoard();
             gameBoard.repaint();
+            
 		} else if (actionEvent.getSource().equals(gameMovesPerSecond)){
 			//TODO Defines the moves per second
 		} else if (actionEvent.getSource().equals(gameAutofill)){
@@ -180,11 +185,14 @@ public class GameGUI extends JFrame implements ActionListener{
 
 		// Sub-menu Rule
 		else {
-		//TODO
 			for(int index = 0; index < ruleList.size(); index++){
-				if (actionEvent.getSource().equals(ruleList.get(index))){
+				ruleList.get(index).setEnabled(true);
+				
+				if (actionEvent.getSource().equals(ruleList.get(index))){	
 					System.out.println(ruleList.get(index).getName());
 					engine.setStrategy((Strategy)context.getBean(ruleList.get(index).getName()));
+					
+					ruleList.get(index).setEnabled(false);
 				}
 			}
 		}
@@ -308,16 +316,20 @@ public class GameGUI extends JFrame implements ActionListener{
 
 	        @Override
 	        public void run() {
+	        	// Initializing the board
 	            boolean[][] gameBoard = new boolean[gameBoardSize.width+2][gameBoardSize.height+2];
 	            for (Cell current : cell) {
 	                gameBoard[current.getX()+1][current.getY()+1] = true;
-	            }
+	            }	            
+	        	
 	            ArrayList<Cell> survivingCells = new ArrayList<Cell>(0);
 	            
 	            // Iterate through the array, follow game of life rules
-	            for (int i=1; i<gameBoard.length-1; i++) {
+	            for (int i=1; i<gameBoard[0].length-1; i++) {
 	                for (int j=1; j<gameBoard[0].length-1; j++) {
+	                
 	                    int surrounding = 0;
+	                    
 	                    if (gameBoard[i-1][j-1]) { surrounding++; }
 	                    if (gameBoard[i-1][j])   { surrounding++; }
 	                    if (gameBoard[i-1][j+1]) { surrounding++; }
@@ -326,6 +338,7 @@ public class GameGUI extends JFrame implements ActionListener{
 	                    if (gameBoard[i+1][j-1]) { surrounding++; }
 	                    if (gameBoard[i+1][j])   { surrounding++; }
 	                    if (gameBoard[i+1][j+1]) { surrounding++; }
+	                    
 	                    if (gameBoard[i][j]) {
 	                        // Cell is alive, Can the cell live? (2-3)
 	                        if ((surrounding == 2) || (surrounding == 3)) {
@@ -339,6 +352,9 @@ public class GameGUI extends JFrame implements ActionListener{
 	                    }
 	                }
 	            }
+	            
+	            
+	            
 	            resetBoard();
 	            cell.addAll(survivingCells);
 	            repaint();
@@ -346,6 +362,7 @@ public class GameGUI extends JFrame implements ActionListener{
 	                Thread.sleep(1000/movesPerSecond);
 	                run();
 	            } catch (InterruptedException ex) {}
+
 	            
 	        }
 	  }
