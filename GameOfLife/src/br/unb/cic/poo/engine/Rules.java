@@ -2,6 +2,11 @@ package br.unb.cic.poo.engine;
 
 import java.util.ArrayList;
 
+/**
+ * Classe que implementa a injeção de dependência no atributo strategies
+ *
+ * @author LSantos06
+ */
 public class Rules {
 	private ArrayList<Strategy> strategies = new ArrayList<Strategy>(0);
 

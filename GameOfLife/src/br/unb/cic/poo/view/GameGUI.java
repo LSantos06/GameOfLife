@@ -59,7 +59,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		JFrame game = new GameGUI(controller, engine);
 
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		game.setTitle("Conway's Game of Life");
+		game.setTitle("Conway's Game of Life (by Lucas & Gabriel)");
 		game.setSize(DEFAULT_WINDOW_SIZE);
 		game.setMinimumSize(MINIMUM_WINDOW_SIZE);
 		game.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - game.getWidth())/2, 
@@ -118,10 +118,15 @@ public class GameGUI extends JFrame implements ActionListener{
 		// Sub-menu of the column Rule
 		rules = (Rules)context.getBean("rules");
 
-		// For each rule, add a button
+		// For each rule, add a menu item
 		for(Strategy currentRule: rules.getStrategies()){
+			// Add the name of the strategy
 			JMenuItem item = new JMenuItem(currentRule.getName());
+			
+			// Set the item name to the bean associated to the strategy
 			item.setName(currentRule.getBeanName());
+			
+			// Add the rule in the list of rule menu items
 			ruleList.add(item);
 		}
 		for(JMenuItem currentItem: ruleList){
@@ -262,11 +267,14 @@ public class GameGUI extends JFrame implements ActionListener{
 		// Sub-menu Rule
 		else {
 			for(int index = 0; index < ruleList.size(); index++){
+				// Make the rule enabled
 				ruleList.get(index).setEnabled(true);
 
-				if (actionEvent.getSource().equals(ruleList.get(index))){	
+				if (actionEvent.getSource().equals(ruleList.get(index))){
+					// Set the strategy using the bean name in the list of rule menu items
 					engine.setStrategy((Strategy)context.getBean(ruleList.get(index).getName()));
-
+					
+					// Make the rule disabled
 					ruleList.get(index).setEnabled(false);
 				}
 			}
@@ -309,10 +317,6 @@ public class GameGUI extends JFrame implements ActionListener{
 			if ((x >= 0) && (x < gameBoardSize.width) && (y >= 0) && (y < gameBoardSize.height)) {
 				addCell(x,y);
 			}
-		}
-
-		public void removeCell(int x, int y) {
-			cell.remove(new Cell(x,y));
 		}
 
 		public void resetBoard() {
@@ -412,7 +416,7 @@ public class GameGUI extends JFrame implements ActionListener{
 			try {
 				Thread.sleep(1000/movesPerSecond);
 				run();
-			} catch (InterruptedException interruptedException) {}
+			} catch (InterruptedException ie) {}
 
 		}
 	}
