@@ -47,8 +47,9 @@ public class GameGUI extends JFrame implements ActionListener{
 
 		//Initializing Engine
 		GameEngine engine = new GameEngine(gameStatistics);
-		// Default strategy: conway
-		engine.setStrategy((Strategy)context.getBean("anneal"));
+		// Default strategy
+		Rules initialRule = (Rules)context.getBean("rules");
+		engine.setStrategy((Strategy)context.getBean(initialRule.getStrategies().get(0).getBeanName()));
 
 		// Setup the swing specifics
 		JFrame game = new GameGUI(engine);
