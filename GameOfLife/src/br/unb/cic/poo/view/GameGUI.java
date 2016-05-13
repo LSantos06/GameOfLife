@@ -51,7 +51,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		GameController controller = new GameController();
 
 		//TODO
-		GameEngine engine = new GameEngine(10, 10, gameStatistics);
+		GameEngine engine = new GameEngine(gameStatistics);
 		// Default strategy: conway
 		engine.setStrategy((Strategy)context.getBean("conway"));
 
