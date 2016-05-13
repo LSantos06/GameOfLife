@@ -1,27 +1,27 @@
-package br.unb.cic.poo.engine;
+package br.unb.cic.poo.rules;
 
 import java.util.ArrayList;
 
+import br.unb.cic.poo.engine.GameEngine;
 import br.unb.cic.poo.game.Cell;
-import br.unb.cic.poo.model.GameEngine;
 
 /**
  * Implementacao de uma estrategia de derivacao 
- * baseada nas regras do HighLife. 
+ * baseada nas regras do LifeWithoutDeath. 
  * 
- * B36/S23
+ * B3/S012345678
  * 
  * @author LSantos06
  */
-public class HighLife implements Strategy{
+public class LifeWithoutDeath implements Strategy{
 	@Override
 	public String getName() {
-		return "HighLife (B36/S23)"; 
+		return "LifeWithoutDeath (B3/S012345678)";
 	}
 	
 	@Override
 	public String getBeanName(){
-		return "highlife";
+		return "lifewithoutdeath";
 	}
 
 	@Override
@@ -43,15 +43,12 @@ public class HighLife implements Strategy{
                 if (gameBoard[i+1][j+1]) { surrounding++; }
                 
                 if (gameBoard[i][j]) {
-                    // Cell is alive, Can the cell survives? S(23)
-                    if ((surrounding == 2) || (surrounding == 3)) {
-                        survivingCells.add(new Cell(i-1,j-1));
-                    } else {
-                    	engine.getStatistics().recordKill();
-                    }
+                    // Cell is alive, Can the cell survives? S(012345678)
+                	survivingCells.add(new Cell(i-1,j-1));
+                    
                 } else {
-                    // Cell is dead, will the cell be given birth? B(36)
-                    if ((surrounding == 3) || (surrounding == 6)) {
+                    // Cell is dead, will the cell be given birth? B(3)
+                    if ((surrounding == 3)) {
                         survivingCells.add(new Cell(i-1,j-1));
                         engine.getStatistics().recordRevive();
                     }

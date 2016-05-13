@@ -1,27 +1,27 @@
-package br.unb.cic.poo.engine;
+package br.unb.cic.poo.rules;
 
 import java.util.ArrayList;
 
+import br.unb.cic.poo.engine.GameEngine;
 import br.unb.cic.poo.game.Cell;
-import br.unb.cic.poo.model.GameEngine;
 
 /**
  * Implementacao de uma estrategia de derivacao 
- * baseada nas regras do DayAndNight. 
+ * baseada nas regras do HighLife. 
  * 
- * B3678/S34678
+ * B36/S23
  * 
  * @author LSantos06
  */
-public class DayAndNight implements Strategy{
+public class HighLife implements Strategy{
 	@Override
 	public String getName() {
-		return "DayAndNight (B3678/S34678)";
+		return "HighLife (B36/S23)"; 
 	}
 	
 	@Override
 	public String getBeanName(){
-		return "dayandnight";
+		return "highlife";
 	}
 
 	@Override
@@ -43,17 +43,15 @@ public class DayAndNight implements Strategy{
                 if (gameBoard[i+1][j+1]) { surrounding++; }
                 
                 if (gameBoard[i][j]) {
-                    // Cell is alive, Can the cell survives? S(34678)
-                    if ((surrounding == 3) || (surrounding == 4) || (surrounding == 6) ||
-                    	(surrounding == 7) || (surrounding == 8)) {
+                    // Cell is alive, Can the cell survives? S(23)
+                    if ((surrounding == 2) || (surrounding == 3)) {
                         survivingCells.add(new Cell(i-1,j-1));
                     } else {
                     	engine.getStatistics().recordKill();
                     }
                 } else {
-                    // Cell is dead, will the cell be given birth? B(3678)
-                    if ((surrounding == 3) || (surrounding == 6) || (surrounding == 7) ||
-                        (surrounding == 8)) {
+                    // Cell is dead, will the cell be given birth? B(36)
+                    if ((surrounding == 3) || (surrounding == 6)) {
                         survivingCells.add(new Cell(i-1,j-1));
                         engine.getStatistics().recordRevive();
                     }

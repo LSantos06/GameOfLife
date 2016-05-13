@@ -1,27 +1,27 @@
-package br.unb.cic.poo.engine;
+package br.unb.cic.poo.rules;
 
 import java.util.ArrayList;
 
+import br.unb.cic.poo.engine.GameEngine;
 import br.unb.cic.poo.game.Cell;
-import br.unb.cic.poo.model.GameEngine;
 
 /**
  * Implementacao de uma estrategia de derivacao 
- * baseada nas regras do Diamoeba. 
+ * baseada nas regras do Replicator. 
  * 
- * B35678/S5678
+ * B1357/S1357
  * 
  * @author LSantos06
  */
-public class Diamoeba implements Strategy{
+public class Replicator implements Strategy{
 	@Override
 	public String getName() {
-		return "Diamoeba (B35678/S5678)";
+		return "Replicator (B1357/S1357)";
 	}
 	
 	@Override
 	public String getBeanName(){
-		return "diamoeba";
+		return "replicator";
 	}
 
 	@Override
@@ -43,17 +43,17 @@ public class Diamoeba implements Strategy{
                 if (gameBoard[i+1][j+1]) { surrounding++; }
                 
                 if (gameBoard[i][j]) {
-                    // Cell is alive, Can the cell survives? S(5678)
-                    if ((surrounding == 5) || (surrounding == 6) ||
-                    	(surrounding == 7) || (surrounding == 8)) {
+                    // Cell is alive, Can the cell survives? S(1357)
+                    if ((surrounding == 1) || (surrounding == 3) || (surrounding == 5) ||
+                        (surrounding == 7)) {
                         survivingCells.add(new Cell(i-1,j-1));
                     } else {
                     	engine.getStatistics().recordKill();
                     }
                 } else {
-                    // Cell is dead, will the cell be given birth? B(35678)
-                    if ((surrounding == 3) || (surrounding == 5) || (surrounding == 6) || 
-                    	(surrounding == 7) || (surrounding == 8)) {
+                    // Cell is dead, will the cell be given birth? B(1357)
+                    if ((surrounding == 1) || (surrounding == 3) || (surrounding == 5) ||
+                        (surrounding == 7)) {
                         survivingCells.add(new Cell(i-1,j-1));
                         engine.getStatistics().recordRevive();
                     }

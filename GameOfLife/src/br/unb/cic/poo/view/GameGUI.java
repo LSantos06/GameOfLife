@@ -9,12 +9,11 @@ import javax.swing.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import br.unb.cic.poo.controller.GameController;
-import br.unb.cic.poo.engine.Rules;
-import br.unb.cic.poo.engine.Strategy;
+import br.unb.cic.poo.engine.GameEngine;
 import br.unb.cic.poo.game.Cell;
 import br.unb.cic.poo.game.Statistics;
-import br.unb.cic.poo.model.GameEngine;
+import br.unb.cic.poo.rules.Rules;
+import br.unb.cic.poo.rules.Strategy;
 
 public class GameGUI extends JFrame implements ActionListener{
 	private static final long serialVersionUID = -5713208627727048620L;
@@ -41,22 +40,18 @@ public class GameGUI extends JFrame implements ActionListener{
 	private Thread gameOfLife;
 
 	private GameEngine engine;
-	private GameController controller;
 
 	public static void main(String[] args) {
 		// Initializing Statistics
 		Statistics gameStatistics = new Statistics();
 
-		// Initializing Controller and Engine
-		GameController controller = new GameController();
-
-		//TODO
+		//Initializing Engine
 		GameEngine engine = new GameEngine(gameStatistics);
 		// Default strategy: conway
 		engine.setStrategy((Strategy)context.getBean("anneal"));
 
 		// Setup the swing specifics
-		JFrame game = new GameGUI(controller, engine);
+		JFrame game = new GameGUI(engine);
 
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setTitle("Conway's Game of Life (by Lucas & Gabriel)");
@@ -67,7 +62,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		game.setVisible(true);
 	}
 
-	public GameGUI(GameController controller, GameEngine engine){
+	public GameGUI(GameEngine engine){
 		// Setting up the menu
 		menu = new JMenuBar();
 		setJMenuBar(menu);
@@ -144,8 +139,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		gameBoard = new GameBoard();
 		add(gameBoard);    	
 
-		// Setting Controller and Engine
-		this.controller = controller;
+		// Setting Engine
 		this.engine = engine;
 	}
 
@@ -187,6 +181,9 @@ public class GameGUI extends JFrame implements ActionListener{
 			gameBoard.repaint();
 			
 		} else if (actionEvent.getSource().equals(gameNextGeneration)){
+			// Reset the values of the Statistics
+			engine.getStatistics().setKilledCells(0);
+			engine.getStatistics().setRevivedCells(0);
 			// Computes the next generation
 			setGameBeingPlayed(true);
 			setGameBeingPlayed(false);

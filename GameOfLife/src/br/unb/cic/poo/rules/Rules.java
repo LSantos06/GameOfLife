@@ -1,4 +1,4 @@
-package br.unb.cic.poo.engine;
+package br.unb.cic.poo.rules;
 
 import java.util.ArrayList;
 

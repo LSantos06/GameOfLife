@@ -3,7 +3,7 @@
 
 <beans>
 	<!-- List of rules -->
-	<bean id="rules" class="br.unb.cic.poo.engine.Rules" scope="prototype">
+	<bean id="rules" class="br.unb.cic.poo.rules.Rules" scope="prototype">
 		<property name="strategies">
 			<list>
 				<ref bean="anneal"/>
@@ -19,13 +19,13 @@
 	</bean>
 
 	<!-- Rules -->	
-	<bean id="anneal" class="br.unb.cic.poo.engine.Anneal" scope="prototype"/>
-	<bean id="conway" class="br.unb.cic.poo.engine.Conway" scope="prototype"/>
-	<bean id="dayandnight" class="br.unb.cic.poo.engine.DayAndNight" scope="prototype"/>
-	<bean id="highlife" class="br.unb.cic.poo.engine.HighLife" scope="prototype"/>
-	<bean id="lifewithoutdeath" class="br.unb.cic.poo.engine.LifeWithoutDeath" scope="prototype"/>
-	<bean id="morley" class="br.unb.cic.poo.engine.Morley" scope="prototype"/>
-	<bean id="replicator" class="br.unb.cic.poo.engine.Replicator" scope="prototype"/>
-	<bean id="seeds" class="br.unb.cic.poo.engine.Seeds" scope="prototype"/>
+	<bean id="anneal" class="br.unb.cic.poo.rules.Anneal" scope="prototype"/>
+	<bean id="conway" class="br.unb.cic.poo.rules.Conway" scope="prototype"/>
+	<bean id="dayandnight" class="br.unb.cic.poo.rules.DayAndNight" scope="prototype"/>
+	<bean id="highlife" class="br.unb.cic.poo.rules.HighLife" scope="prototype"/>
+	<bean id="lifewithoutdeath" class="br.unb.cic.poo.rules.LifeWithoutDeath" scope="prototype"/>
+	<bean id="morley" class="br.unb.cic.poo.rules.Morley" scope="prototype"/>
+	<bean id="replicator" class="br.unb.cic.poo.rules.Replicator" scope="prototype"/>
+	<bean id="seeds" class="br.unb.cic.poo.rules.Seeds" scope="prototype"/>
 
 </beans>

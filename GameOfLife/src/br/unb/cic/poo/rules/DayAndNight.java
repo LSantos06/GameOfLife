@@ -1,27 +1,27 @@
-package br.unb.cic.poo.engine;
+package br.unb.cic.poo.rules;
 
 import java.util.ArrayList;
 
+import br.unb.cic.poo.engine.GameEngine;
 import br.unb.cic.poo.game.Cell;
-import br.unb.cic.poo.model.GameEngine;
 
 /**
  * Implementacao de uma estrategia de derivacao 
- * baseada nas regras do LifeWithoutDeath. 
+ * baseada nas regras do DayAndNight. 
  * 
- * B3/S012345678
+ * B3678/S34678
  * 
  * @author LSantos06
  */
-public class LifeWithoutDeath implements Strategy{
+public class DayAndNight implements Strategy{
 	@Override
 	public String getName() {
-		return "LifeWithoutDeath (B3/S012345678)";
+		return "DayAndNight (B3678/S34678)";
 	}
 	
 	@Override
 	public String getBeanName(){
-		return "lifewithoutdeath";
+		return "dayandnight";
 	}
 
 	@Override
@@ -43,12 +43,17 @@ public class LifeWithoutDeath implements Strategy{
                 if (gameBoard[i+1][j+1]) { surrounding++; }
                 
                 if (gameBoard[i][j]) {
-                    // Cell is alive, Can the cell survives? S(012345678)
-                	survivingCells.add(new Cell(i-1,j-1));
-                    
+                    // Cell is alive, Can the cell survives? S(34678)
+                    if ((surrounding == 3) || (surrounding == 4) || (surrounding == 6) ||
+                    	(surrounding == 7) || (surrounding == 8)) {
+                        survivingCells.add(new Cell(i-1,j-1));
+                    } else {
+                    	engine.getStatistics().recordKill();
+                    }
                 } else {
-                    // Cell is dead, will the cell be given birth? B(3)
-                    if ((surrounding == 3)) {
+                    // Cell is dead, will the cell be given birth? B(3678)
+                    if ((surrounding == 3) || (surrounding == 6) || (surrounding == 7) ||
+                        (surrounding == 8)) {
                         survivingCells.add(new Cell(i-1,j-1));
                         engine.getStatistics().recordRevive();
                     }

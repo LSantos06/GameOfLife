@@ -1,27 +1,27 @@
-package br.unb.cic.poo.engine;
+package br.unb.cic.poo.rules;
 
 import java.util.ArrayList;
 
+import br.unb.cic.poo.engine.GameEngine;
 import br.unb.cic.poo.game.Cell;
-import br.unb.cic.poo.model.GameEngine;
 
 /**
  * Implementacao de uma estrategia de derivacao 
- * baseada nas regras do Replicator. 
+ * baseada nas regras do Morley. 
  * 
- * B1357/S1357
+ * B368/S245
  * 
  * @author LSantos06
  */
-public class Replicator implements Strategy{
+public class Morley implements Strategy{
 	@Override
 	public String getName() {
-		return "Replicator (B1357/S1357)";
+		return "Morley (B368/S245)";
 	}
 	
 	@Override
 	public String getBeanName(){
-		return "replicator";
+		return "morley";
 	}
 
 	@Override
@@ -43,17 +43,15 @@ public class Replicator implements Strategy{
                 if (gameBoard[i+1][j+1]) { surrounding++; }
                 
                 if (gameBoard[i][j]) {
-                    // Cell is alive, Can the cell survives? S(1357)
-                    if ((surrounding == 1) || (surrounding == 3) || (surrounding == 5) ||
-                        (surrounding == 7)) {
+                    // Cell is alive, Can the cell survives? S(245)
+                    if ((surrounding == 2) || (surrounding == 4) || (surrounding == 5)) {
                         survivingCells.add(new Cell(i-1,j-1));
                     } else {
                     	engine.getStatistics().recordKill();
                     }
                 } else {
-                    // Cell is dead, will the cell be given birth? B(1357)
-                    if ((surrounding == 1) || (surrounding == 3) || (surrounding == 5) ||
-                        (surrounding == 7)) {
+                    // Cell is dead, will the cell be given birth? B(368)
+                    if ((surrounding == 3) || (surrounding == 6) || (surrounding == 8)) {
                         survivingCells.add(new Cell(i-1,j-1));
                         engine.getStatistics().recordRevive();
                     }
