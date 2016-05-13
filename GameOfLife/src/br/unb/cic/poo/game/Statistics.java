@@ -13,12 +13,20 @@ public class Statistics {
 		return revivedCells;
 	}
 
-	public void recordRevive() {
-		this.revivedCells++;
+	public void setRevivedCells(int revivedCells) {
+		this.revivedCells = revivedCells;
 	}
 
 	public int getKilledCells() {
 		return killedCells;
+	}
+	
+	public void setKilledCells(int killedCells) {
+		this.killedCells = killedCells;
+	}
+
+	public void recordRevive() {
+		this.revivedCells++;
 	}
 
 	public void recordKill() {

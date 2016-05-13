@@ -53,7 +53,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		//TODO
 		GameEngine engine = new GameEngine(gameStatistics);
 		// Default strategy: conway
-		engine.setStrategy((Strategy)context.getBean("conway"));
+		engine.setStrategy((Strategy)context.getBean("anneal"));
 
 		// Setup the swing specifics
 		JFrame game = new GameGUI(controller, engine);
@@ -181,6 +181,8 @@ public class GameGUI extends JFrame implements ActionListener{
 
 		} else if (actionEvent.getSource().equals(gameReset)){
 			// Reset the game
+			engine.getStatistics().setKilledCells(0);
+			engine.getStatistics().setRevivedCells(0);
 			gameBoard.resetBoard();
 			gameBoard.repaint();
 			
@@ -260,8 +262,25 @@ public class GameGUI extends JFrame implements ActionListener{
 
 		// Sub-menu Statistics
 		else if (actionEvent.getSource().equals(statisticsView)){
-			//TODO Statistics
-			System.out.println("Statistcs");
+			// Statistics
+			final JFrame frameStatistics = new JFrame();
+			frameStatistics.setTitle("Statistics");
+			frameStatistics.setSize(360,60);
+			frameStatistics.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - frameStatistics.getWidth())/2, 
+	                (Toolkit.getDefaultToolkit().getScreenSize().height - frameStatistics.getHeight())/2);
+			frameStatistics.setResizable(false);
+			
+			JPanel panelStatistics = new JPanel();
+			panelStatistics.setOpaque(false);
+			
+			frameStatistics.add(panelStatistics);
+			
+			panelStatistics.add(new JLabel("Revived Cells:"));
+			panelStatistics.add(new JLabel(String.valueOf(engine.getStatistics().getRevivedCells())));
+			panelStatistics.add(new JLabel("Killed Cells:"));
+			panelStatistics.add(new JLabel(String.valueOf(engine.getStatistics().getKilledCells())));
+			
+			frameStatistics.setVisible(true);
 		}
 
 		// Sub-menu Rule
@@ -401,13 +420,13 @@ public class GameGUI extends JFrame implements ActionListener{
 			for (Cell current : cell) {
 				gameBoard[current.getX()+1][current.getY()+1] = true;
 			}	            
-
+			
 			// Creating the list of survivingCells
 			ArrayList<Cell> survivingCells = new ArrayList<Cell>(0);
 
 			// Getting the strategy
-			survivingCells = engine.getStrategy().survivors(gameBoard, survivingCells);
-
+			survivingCells = engine.getStrategy().survivors(gameBoard, survivingCells, engine);
+			
 			// Adding the survivingCells to the board
 			resetBoard();
 			cell.addAll(survivingCells);

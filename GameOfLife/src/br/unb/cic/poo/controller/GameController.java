@@ -1,5 +1,7 @@
 package br.unb.cic.poo.controller;
 
+import java.security.InvalidParameterException;
+
 import br.unb.cic.poo.game.Statistics;
 import br.unb.cic.poo.model.GameEngine;
 

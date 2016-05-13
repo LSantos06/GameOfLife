@@ -34,6 +34,14 @@ public class GameEngine {
 	public Strategy getStrategy() {
 		return strategy;
 	}
+
+	public Statistics getStatistics() {
+		return statistics;
+	}
+
+	public void setStatistics(Statistics statistics) {
+		this.statistics = statistics;
+	}
 	
 //	/*
 //	 * Calcula uma nova geracao do ambiente. Essa implementacao delega para 
