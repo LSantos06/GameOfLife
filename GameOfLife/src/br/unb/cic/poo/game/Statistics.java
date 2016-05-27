@@ -13,25 +13,23 @@ public class Statistics {
 		return revivedCells;
 	}
 
-	public void recordRevive() {
-		this.revivedCells++;
+	public void setRevivedCells(int revivedCells) {
+		this.revivedCells = revivedCells;
 	}
 
 	public int getKilledCells() {
 		return killedCells;
 	}
+	
+	public void setKilledCells(int killedCells) {
+		this.killedCells = killedCells;
+	}
+
+	public void recordRevive() {
+		this.revivedCells++;
+	}
 
 	public void recordKill() {
 		this.killedCells++;
-	}
-	
-	//TODO
-	public void display() {
-		System.out.println("=================================");
-		System.out.println("           Statistics            ");
-		System.out.println("=================================");
-		System.out.println("Revived cells: " + revivedCells);
-		System.out.println("Killed cells: " + killedCells);
-		System.out.println("=================================");
 	}
 }
